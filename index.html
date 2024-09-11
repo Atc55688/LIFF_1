@@ -58,7 +58,20 @@
             const isInClient = liff.isInClient()
             document.getElementById("txt_id").value =  '拿到isInClient(這個要true才行) : ' + isInClient;
           
-
+            liff.sendMessages([
+                          {
+                            type: "text(55688)",
+                            text: "Hello, World!",
+                          },
+                        ])
+                        .then(() => {
+                          console.log("message sent");
+                          document.getElementById("txt_id").value =  '發送成功';  
+                        })
+                        .catch((err) => {
+                          console.log("error", err);
+                          document.getElementById("txt_id").value =  '發送失敗' + err;  
+                        });
             return
 
 /*
