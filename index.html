@@ -62,7 +62,7 @@
             const isisLoggedIn = liff.isLoggedIn()
             document.getElementById("txt_id").value =  '拿到isisLoggedIn(這個要true才行) : ' + isisLoggedIn;
 
-            
+            /*
             liff.sendMessages([
                           {
                             type: "text",
@@ -77,6 +77,18 @@
                           console.log("error", err);
                           document.getElementById("txt_id").value =  '發送失敗(sendMessages)' + err;  
                         });
+*/
+            liff.shareTargetPicker([
+                    {
+                      type: "text",
+                      text: "Happy"
+                    }
+                  ])
+                    .then(
+                      alert("ShareTargetPicker was launched")
+                    ).catch(function(res) {
+                      alert("Failed to launch ShareTargetPicker")
+                    })
             
             return
 
