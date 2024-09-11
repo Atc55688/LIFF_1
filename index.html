@@ -57,6 +57,10 @@
 
             const isInClient = liff.isInClient()
             document.getElementById("txt_id").value =  '拿到isInClient(這個要true才行) : ' + isInClient;
+
+
+            const isisLoggedIn = liff.isLoggedIn()
+            document.getElementById("txt_id").value =  '拿到isisLoggedIn(這個要true才行) : ' + isisLoggedIn;
           
             liff.sendMessages([
                           {
@@ -187,7 +191,7 @@
   </script>
 </head>
 <body>
-  <h1>LIFF Send Message to Friend 0911</h1>
+  <h1>LIFF Send Message to Friend 1027</h1>
   <textarea id="show_title" valeu=""></textarea></br>
   <input  id="userId">
   <label for="messageText">輸入訊息：</label>
