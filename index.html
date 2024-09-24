@@ -155,15 +155,16 @@
 
             var Get_Line_UserId = ''
             var Get_Line_mail = ''
-            liff.getProfile().then(function(profile) {
+  /*          liff.getProfile().then(function(profile) {
                 Get_Line_UserId = profile.userId
                 console.log(profile.userId);
             }).catch(function(error) {
                 console.error('Error getting profile: ' + error);
             });
-
+*/
             if (liff.isLoggedIn()) {
               const idToken = liff.getDecodedIDToken();
+              Get_Line_UserId = idToken.sub
               Get_Line_mail = idToken.email
             }
             
