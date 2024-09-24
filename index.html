@@ -33,9 +33,7 @@
     }
     function initializeLiff() {
         document.getElementById("show_title").value = "123456789";  
-
-      
-      //var liffID = '2006266553-X1aYap8L';
+         //var liffID = '2006266553-X1aYap8L';
         document.getElementById("txt_id").value = "開始";  
 
         liff.init({
@@ -78,7 +76,7 @@
                           document.getElementById("txt_id").value =  '發送失敗(sendMessages)' + err;  
                         });
 */
-            liff.shareTargetPicker([
+            liff.shareTargetPicker([// 傳送到某個群組(讓使用者自己選)
                     {
                       type: "text",
                       text: "Happy"
