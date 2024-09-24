@@ -164,6 +164,7 @@
 */
             if (liff.isLoggedIn()) {
               const idToken = liff.getDecodedIDToken();
+              alert(idToken)
               Get_Line_UserId = idToken.sub
               Get_Line_mail = idToken.email
             }
@@ -171,7 +172,7 @@
             liff.sendMessages([
                           {
                             type: "text",
-                            text: "帳號:" + Get_userId + "/密碼:" + Get_Password + "(代號):" + Get_Line_UserId + '/' + Get_Line_mail,
+                            text: "帳號:" + Get_userId + "/密碼:" + Get_Password + "(代號):" + Get_Line_UserId  + '(Mail):' + Get_Line_mail,
                           },
                         ])
                         .then(() => {
