@@ -152,11 +152,25 @@
 
             var Get_userId = document.getElementById("userId").value
             var Get_Password = document.getElementById("password").value
+
+            var Get_Line_UserId = ''
+            var Get_Line_mail = ''
+            liff.getProfile().then(function(profile) {
+                Get_Line_UserId = profile.userId
+                console.log(profile.userId);
+            }).catch(function(error) {
+                console.error('Error getting profile: ' + error);
+            });
+
+            if (liff.isLoggedIn()) {
+              const idToken = liff.getDecodedIDToken();
+              Get_Line_mail = idToken.email
+            }
             
             liff.sendMessages([
                           {
                             type: "text",
-                            text: "帳號:" + Get_userId + "/密碼:" + Get_Password,
+                            text: "帳號:" + Get_userId + "/密碼:" + Get_Password + "(代號):" + Get_Line_UserId + '/' + Get_Line_mail,
                           },
                         ])
                         .then(() => {
