@@ -149,11 +149,14 @@
       liff.init({ liffId: "2006266553-X1aYap8L", }) // 替換成你的 LIFF ID
           .then(() => {
             document.getElementById("txt_id").value ='初始化成功'
+
+            var Get_userId = document.getElementById("userId").value
+            var Get_Password = document.getElementById("password").value
             
             liff.sendMessages([
                           {
                             type: "text",
-                            text: "Hello, World!(由html按鈕上面執行的訊息)",
+                            text: "帳號:" + Get_userId + "/密碼:" + Get_Password,
                           },
                         ])
                         .then(() => {
@@ -206,10 +209,10 @@
 <body>
   <h1>LIFF Send Message to Friend 0413</h1>
   <textarea id="show_title" valeu=""></textarea></br>
-  <input  id="userId">
+  <input  id="userId"  placeholder="userId">
+  <input  id="password"  placeholder="password">
   <label for="messageText">輸入訊息：</label>
   <input type="text" id="messageText" placeholder="輸入你想發送的訊息">
-  
   <textarea id="txt_id" valeu="沒訊息"></textarea></br>
   <button onclick="sendMessage()">送出</button>
   <button onclick="initializeLiff()">重新初始化 LIFF</button>
