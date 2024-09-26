@@ -4,12 +4,12 @@
   <title>Pre-fill Text LIFF</title>
   <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/versions/2.1.13/sdk.js"></script>
   <script>
-    async function main() {
-      await liff.init({ liffId: "2006266553-X1aYap8L" });
+    function initializeLiff() {
+      liff.init({ liffId: "2006266553-X1aYap8L" });
 
       if (liff.isInClient()) {
-        const urlParams = new URLSearchParams(window.location.search);
-        const preFilledText = urlParams.get('text') || '';
+         // 直接設置預設填入的文字
+        const preFilledText = "我是預設填入文字</br>你好\n換行";
 
         // 預填文字但不發送
         liff.sendMessages([{
@@ -22,9 +22,13 @@
         });
       }
     }
-    main();
+   
+    window.onload = function () {
+      initializeLiff();
+    };
   </script>
 </head>
 <body>
+    02:19
 </body>
 </html>
