@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pre-fill Text LIFF</title>
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+  <script>
+    async function main() {
+      await liff.init({ liffId: "YOUR_LIFF_ID" });
+
+      if (liff.isInClient()) {
+        const urlParams = new URLSearchParams(window.location.search);
+        const preFilledText = urlParams.get('text') || '';
+
+        // 預填文字但不發送
+        liff.sendMessages([{
+          type: 'text',
+          text: preFilledText
+        }]).then(() => {
+          liff.closeWindow();  // 插入文字後，關閉 LIFF 頁面，返回聊天視窗
+        }).catch((err) => {
+          console.log('error', err);
+        });
+      }
+    }
+    main();
+  </script>
+</head>
+<body>
+</body>
+</html>
