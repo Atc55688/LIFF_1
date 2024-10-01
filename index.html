@@ -224,12 +224,12 @@
 </head>
 <body>
   <h1>LIFF Send Message to Friend 0413</h1>
-  <textarea id="show_title" valeu=""></textarea></br>
+  <textarea type="hidden" id="show_title" valeu=""></textarea></br>
   <input  id="userId"  placeholder="userId">
   <input  id="password"  placeholder="password">
-  <label for="messageText">輸入訊息：</label>
-  <input type="text" id="messageText" placeholder="輸入你想發送的訊息">
-  <textarea id="txt_id" valeu="沒訊息"></textarea></br>
+  <label style="visibility:hidden;" for="messageText">輸入訊息：</label>
+  <input type="text" style="visibility:hidden;" id="messageText" placeholder="輸入你想發送的訊息">
+  <textarea style="visibility:hidden;" id="txt_id" valeu="沒訊息"></textarea></br>
   <button onclick="sendMessage()">送出</button>
   <button onclick="initializeLiff()">重新初始化 LIFF</button>
 </body>
