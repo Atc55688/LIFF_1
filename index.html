@@ -172,7 +172,8 @@
             liff.sendMessages([
                           {
                             type: "text",
-                            text: "(帳號):" + Get_userId + "(密碼):" + Get_Password + "(代號):" + Get_Line_UserId  + '(Mail):' + Get_Line_mail,
+                            //text: "(帳號):" + Get_userId + "(密碼):" + Get_Password + "(代號):" + Get_Line_UserId  + '(Mail):' + Get_Line_mail,
+                            text: "account:" + Get_userId + "password:" + Get_Password,
                           },
                         ])
                         .then(() => {
@@ -225,7 +226,7 @@
 <body>
   <h1>LIFF Send Message to Friend 0413</h1>
   <textarea type="hidden" id="show_title" valeu=""></textarea></br>
-  <input  id="userId"  placeholder="userId">
+  <input  id="userId"  placeholder="account">
   <input  id="password"  placeholder="password">
   <label style="visibility:hidden;" for="messageText">輸入訊息：</label>
   <input type="text" style="visibility:hidden;" id="messageText" placeholder="輸入你想發送的訊息">
