@@ -13,7 +13,7 @@
   -->
   <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/versions/2.1.13/sdk.js"></script>
   <script>
-
+  const API_URL = "https://istdemo.chiconypower.com/setter/api/setting/Generals/language-type";
    
     function initializeLiff() {
         liff.init({
@@ -59,6 +59,45 @@
             
             // 將參數設置到 textarea 的 value 屬性
             document.getElementById("txt_id").value = message;//這邊希望LIFT的URL帶參數過來顯示
+
+
+            // 執行一個API，回傳結果  用 LIFF打去LINE上面
+            //https://istdemo.chiconypower.com/setter/api/setting/Generals/language-type
+            const response = await fetch(API_URL, {
+                method: 'GET', // 或 'POST', 'PUT' 等，視需求而定
+                headers: {
+                    'Content-Type': 'application/json', // 若 API 接收 JSON 格式，則設定此 header
+                    // 其他 headers，例如 Authorization, API Key 等
+                },
+                // 如果是 POST 請求，可以加入 body 資料
+                // body: JSON.stringify({ key1: 'value1', key2: 'value2' })
+            });
+    
+            // 檢查回應的狀態碼
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+    
+            // 解析回傳的 JSON 結果
+            const result = await response.json();
+            liff.sendMessages([
+                          {
+                            type: "text",
+                            text: "API回傳結果:" + result,
+                          },
+                        ])
+                        .then(() => {
+                          console.log("message sent");
+                          document.getElementById("txt_id3").value =  '發送成功(sendMessages)';  
+                        })
+                        .catch((err) => {
+                          console.log("error", err);
+                          document.getElementById("txt_id3").value =  '發送失敗(sendMessages)' + err;  
+                        });
+    
+    
+                
+            
 
           })
           .catch((err) => {
