@@ -13,7 +13,7 @@
   -->
   <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/versions/2.1.13/sdk.js"></script>
   <script>
-  const API_URL = "https://id.atlassian.com/login";//"https://api.atlassian.com/flags/api/v2/frontend/clientSdkKey/aid-frontend_web";//"https://istdemo.chiconypower.com/setter/api/setting/Generals/language-type";
+  const API_URL = "https://data.ntpc.gov.tw/api/datasets/04958686-1b92-4b74-889d-9f34409b272b/json";//"https://api.atlassian.com/flags/api/v2/frontend/clientSdkKey/aid-frontend_web";//"https://istdemo.chiconypower.com/setter/api/setting/Generals/language-type";
    
     function initializeLiff() {
         liff.init({
@@ -106,45 +106,24 @@
     }
 
 
-    async function callApiAndSendResult() {
-    try {
-      document.getElementById("txt_id3").value = '進入執行1'
-        // 發送 API 請求
-        const response = await fetch(API_URL, {
-            method: 'GET', // 或 'POST' 等，依照 API 要求選擇
-            headers: {
-                'Content-Type': 'application/json', // 若 API 接收 JSON 格式，則設定此 header
-                // 可以加上其他必要的 headers，例如 Authorization 等
-            },
-            // 若是 POST 請求，則可加入 body
-            // body: JSON.stringify({ key1: 'value1', key2: 'value2' })
-        });
+    function callApiAndSendResult() {
+      try {
+        document.getElementById("txt_id3").value = '進入執行1'
 
-        if (!response.ok) {
-          document.getElementById("txt_id3").value = '進入執行2-失敗'
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-      document.getElementById("txt_id3").value = '進入執行3-成功'
-
-        // 解析 API 回傳結果
-        const result = await response.json();
-        console.log("API 回傳結果:", result);
-
-        // 將結果轉成字串發送到 LINE
-        await liff.sendMessages([{
-            type: 'text',
-            text: `API 回傳結果：\n${JSON.stringify(result, null, 2)}`
-        }]);
-
-        console.log("訊息已送出");
-        alert("結果已發送到 LINE!");
-
-    } catch (error) {
-        console.error("API 呼叫或訊息傳送失敗:", error);
-        alert("無法送出訊息，請重試");
-    }
-}
+        fetch(API_URL)
+          .then(function (response) {
+            document.getElementById("txt_id3").value = 'API成功' + response[0]
+            return response.json();
+          })
+          .then(function (myJson) {
+            document.getElementById("txt_id3").value = 'API失敗'
+            console.log(myJson);
+          });
+      } catch (error) {
+          console.error("API 呼叫或訊息傳送失敗:", error);
+          alert("無法送出訊息，請重試");
+      }
+  }
 
     
     window.onload = function () {
