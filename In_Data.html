@@ -58,24 +58,8 @@
             const message = urlParams.get("message") || "沒訊息";
             
             // 將參數設置到 textarea 的 value 屬性
-            document.getElementById("txt_id").value = message;
+            document.getElementById("txt_id").value = message;//這邊希望LIFT的URL帶參數過來顯示
 
-
-
-
-            // Start to use liff's api
-            liff.sendMessages([
-                          {
-                            type: "text",
-                            text: "Hello, World!(LIFF發送訊息--LIFF 2參數)",
-                          },
-                        ])
-                        .then(() => {
-                          console.log("message sent");
-                        })
-                        .catch((err) => {
-                          console.log("error", err);
-                        });
           })
           .catch((err) => {
             // Error happens during initialization
