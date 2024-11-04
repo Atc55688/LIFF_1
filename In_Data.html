@@ -60,7 +60,7 @@
             // 將參數設置到 textarea 的 value 屬性
             document.getElementById("txt_id").value = message;//這邊希望LIFT的URL帶參數過來顯示
 
-
+            //----------------------------------------------------------------------------------------------------------------------
             // 執行一個API，回傳結果  用 LIFF打去LINE上面
             //https://istdemo.chiconypower.com/setter/api/setting/Generals/language-type
             const response = await fetch(API_URL, {
@@ -74,30 +74,26 @@
             });
     
             // 檢查回應的狀態碼
-            if (!response.ok) {
+            /*if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
-            }
+            }*/
     
             // 解析回傳的 JSON 結果
-            const result = await response.json();
+            var result = await response.json();
             liff.sendMessages([
-                          {
-                            type: "text",
-                            text: "API回傳結果:" + result,
-                          },
-                        ])
-                        .then(() => {
-                          console.log("message sent");
-                          document.getElementById("txt_id3").value =  '發送成功(sendMessages)';  
-                        })
-                        .catch((err) => {
-                          console.log("error", err);
-                          document.getElementById("txt_id3").value =  '發送失敗(sendMessages)' + err;  
-                        });
-    
-    
-                
-            
+              {
+                type: "text",
+                text: "API回傳結果:" + result,
+              },
+            ])
+            .then(() => {
+              console.log("message sent");
+              document.getElementById("txt_id3").value =  '發送成功(sendMessages)';  
+            })
+            .catch((err) => {
+              console.log("error", err);
+              document.getElementById("txt_id3").value =  '發送失敗(sendMessages)' + err;  
+            });
 
           })
           .catch((err) => {
