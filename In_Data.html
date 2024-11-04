@@ -21,6 +21,21 @@
           })
           .then(() => {
 
+            /*
+            // Start to use liff's api
+            document.getElementById("txt_id").value = "LIFF 初始化成功55688";  
+            var os = liff.getOS();
+            document.getElementById("txt_id").value =  os;  */
+            const accessToken = liff.id;
+            document.getElementById("txt_id1").value =  '拿到token : ' + accessToken;
+            const isInClient = liff.isInClient()
+            document.getElementById("txt_id2").value =  '拿到isInClient(這個要true才行) : ' + isInClient;
+            const isisLoggedIn = liff.isLoggedIn()
+            document.getElementById("txt_id3").value =  '拿到isisLoggedIn(這個要true才行) : ' + isisLoggedIn;
+
+
+            
+
              liff.sendMessages([
                           {
                             type: "text",
@@ -75,6 +90,10 @@
 <body>
   <h1>LIFF Send Message to Friend 0413</h1>
   <label>傳遞過來的參數：</label></br>
-  <textarea  id="txt_id" value="沒訊息"></textarea>
+  <textarea  id="txt_id" value="沒訊息"></textarea></br>
+  <textarea  id="txt_id1" value="沒訊息"></textarea></br>
+  <textarea  id="txt_id2" value="沒訊息"></textarea></br>
+  <textarea  id="txt_id3" value="沒訊息"></textarea>
+  
 </body>
 </html>
