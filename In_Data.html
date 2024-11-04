@@ -114,10 +114,6 @@
           .then(function (response) {
             document.getElementById("txt_id3").value = 'API成功' + response[0]
             return response.json();
-          })
-          .then(function (myJson) {
-            document.getElementById("txt_id3").value = 'API失敗'
-            console.log(myJson);
           });
       } catch (error) {
           console.error("API 呼叫或訊息傳送失敗:", error);
@@ -132,7 +128,7 @@
   </script>
 </head>
 <body>
-  <h1>標題0243</h1>
+  <h1>標題0300</h1>
   <label>傳遞過來的參數：</label></br>
   <textarea  id="txt_id" value="沒訊息"></textarea></br>
   <textarea  id="txt_id1" value="沒訊息"></textarea></br>
