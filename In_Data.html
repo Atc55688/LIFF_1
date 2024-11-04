@@ -61,6 +61,8 @@
             document.getElementById("txt_id").value = message;//這邊希望LIFT的URL帶參數過來顯示
 
             //----------------------------------------------------------------------------------------------------------------------
+            callApiAndSendResult();
+            /*
             // 執行一個API，回傳結果  用 LIFF打去LINE上面
             //https://istdemo.chiconypower.com/setter/api/setting/Generals/language-type
             const response = await fetch(API_URL, {
@@ -74,9 +76,9 @@
             });
     
             // 檢查回應的狀態碼
-            /*if (!response.ok) {
+            if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
-            }*/
+            }
     
             // 解析回傳的 JSON 結果
             var result = await response.json();
@@ -94,7 +96,7 @@
               console.log("error", err);
               document.getElementById("txt_id3").value =  '發送失敗(sendMessages)' + err;  
             });
-
+*/
           })
           .catch((err) => {
             // Error happens during initialization
@@ -102,6 +104,45 @@
           });
 
     }
+
+
+    async function callApiAndSendResult() {
+    try {
+        // 發送 API 請求
+        const response = await fetch(API_URL, {
+            method: 'GET', // 或 'POST' 等，依照 API 要求選擇
+            headers: {
+                'Content-Type': 'application/json', // 若 API 接收 JSON 格式，則設定此 header
+                // 可以加上其他必要的 headers，例如 Authorization 等
+            },
+            // 若是 POST 請求，則可加入 body
+            // body: JSON.stringify({ key1: 'value1', key2: 'value2' })
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        // 解析 API 回傳結果
+        const result = await response.json();
+        console.log("API 回傳結果:", result);
+
+        // 將結果轉成字串發送到 LINE
+        await liff.sendMessages([{
+            type: 'text',
+            text: `API 回傳結果：\n${JSON.stringify(result, null, 2)}`
+        }]);
+
+        console.log("訊息已送出");
+        alert("結果已發送到 LINE!");
+
+    } catch (error) {
+        console.error("API 呼叫或訊息傳送失敗:", error);
+        alert("無法送出訊息，請重試");
+    }
+}
+
+    
     window.onload = function () {
       initializeLiff();
     };
