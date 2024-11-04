@@ -20,6 +20,23 @@
             liffId: "2006266553-5WQAQkXv", // Use own liffId
           })
           .then(() => {
+
+             liff.sendMessages([
+                          {
+                            type: "text",
+                            text: "Hello, World!(LIFF發送訊息by In_Data.html)",
+                          },
+                        ])
+                        .then(() => {
+                          console.log("message sent");
+                          //document.getElementById("txt_id").value =  '發送成功(sendMessages)';  
+                        })
+                        .catch((err) => {
+                          console.log("error", err);
+                          //document.getElementById("txt_id").value =  '發送失敗(sendMessages)' + err;  
+                        });
+
+            
             // 取得 URL 中的查詢參數
             const urlParams = new URLSearchParams(window.location.search);
             const message = urlParams.get("message") || "沒訊息";
