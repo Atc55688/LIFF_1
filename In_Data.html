@@ -111,11 +111,16 @@
         document.getElementById("txt_id3").value = '進入執行1'
 
         fetch(API_URL)
-          .then(function (response) {
-            document.getElementById("txt_id3").value = 'API成功' + response[0]
-            console.log(response)
-            return response.json();
-          });
+        .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(data)
+               
+            })
       } catch (error) {
           console.error("API 呼叫或訊息傳送失敗:", error);
           alert("無法送出訊息，請重試");
@@ -129,7 +134,7 @@
   </script>
 </head>
 <body>
-  <h1>標題0302</h1>
+  <h1>標題0305</h1>
   <label>傳遞過來的參數：</label></br>
   <textarea  id="txt_id" value="沒訊息"></textarea></br>
   <textarea  id="txt_id1" value="沒訊息"></textarea></br>
