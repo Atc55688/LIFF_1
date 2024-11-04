@@ -108,6 +108,7 @@
 
     async function callApiAndSendResult() {
     try {
+      document.getElementById("txt_id3").value = '進入執行1'
         // 發送 API 請求
         const response = await fetch(API_URL, {
             method: 'GET', // 或 'POST' 等，依照 API 要求選擇
@@ -120,8 +121,11 @@
         });
 
         if (!response.ok) {
+          document.getElementById("txt_id3").value = '進入執行2-失敗'
             throw new Error(`HTTP error! status: ${response.status}`);
         }
+
+      document.getElementById("txt_id3").value = '進入執行3-成功'
 
         // 解析 API 回傳結果
         const result = await response.json();
