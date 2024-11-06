@@ -143,6 +143,13 @@
 
 
     }
+    function go_next(){
+      // 跳轉到下一頁
+      window.location.href = "https://liff.line.me/2006266553-5WQAQkXv";
+      
+        liff.closeWindow();// 關閉liff頁面。
+    
+    }
 
     function sendMessage() {
 
@@ -192,8 +199,6 @@
             console.error("LIFF 初始化失敗", err);
           });
 
-      // 跳轉到下一頁
-      window.location.href = "https://liff.line.me/2006266553-5WQAQkXv";
       
         liff.closeWindow();// 關閉liff頁面。
 /*
@@ -235,5 +240,6 @@
   <textarea style="visibility:hidden;" id="txt_id" value="沒訊息"></textarea></br>
   <button onclick="sendMessage()">送出</button>
   <button onclick="initializeLiff()">重新初始化 LIFF</button>
+  <button onclick="go_next()">前往第二頁</button>
 </body>
 </html>
