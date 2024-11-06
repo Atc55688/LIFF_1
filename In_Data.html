@@ -23,8 +23,18 @@
             var user_token = liff.getAccessToken()
             document.getElementById("txt_id1").value =  '使用者的token:' + user_token;  
 
-            const userId = liff.getProfile().userId;
-            document.getElementById("txt_id2").value =  '使用者的UserID:' + userId;  
+
+            liff.getProfile()
+                .then(profile => {
+                    const userId = profile.userId;
+                    console.log(userId); // 這裡可以使用 userId
+                    // 可以在這裡執行其他需要 userId 的操作
+                  document.getElementById("txt_id2").value =  '使用者的UserID:' + userId;  
+                })
+                .catch(error => {
+                    console.error('Error getting profile:', error);
+                });
+                      
             /*
             // Start to use liff's api
             document.getElementById("txt_id").value = "LIFF 初始化成功55688";  
@@ -140,7 +150,7 @@
   </script>
 </head>
 <body>
-  <h1>標題0116</h1>
+  <h1>標題0121</h1>
   <label>傳遞過來的參數：</label></br>
   <textarea  id="txt_id" value="沒訊息"></textarea></br>
   <textarea  id="txt_id1" value="沒訊息"></textarea></br>
