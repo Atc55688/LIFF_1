@@ -20,7 +20,8 @@
             liffId: "2006266553-5WQAQkXv", // Use own liffId
           })
           .then(() => {
-
+            var user_token = liff.getAccessToken()
+            document.getElementById("txt_id1").value =  '使用者的token:' + user_token;  
             /*
             // Start to use liff's api
             document.getElementById("txt_id").value = "LIFF 初始化成功55688";  
