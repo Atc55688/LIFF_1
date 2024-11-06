@@ -23,7 +23,7 @@
             var user_token = liff.getAccessToken()
             document.getElementById("txt_id1").value =  '使用者的token:' + user_token;  
 
-            const userId = profile.userId;
+            const userId = liff.getProfile().userId;
             document.getElementById("txt_id2").value =  '使用者的UserID:' + userId;  
             /*
             // Start to use liff's api
@@ -140,7 +140,7 @@
   </script>
 </head>
 <body>
-  <h1>標題0307</h1>
+  <h1>標題0116</h1>
   <label>傳遞過來的參數：</label></br>
   <textarea  id="txt_id" value="沒訊息"></textarea></br>
   <textarea  id="txt_id1" value="沒訊息"></textarea></br>
