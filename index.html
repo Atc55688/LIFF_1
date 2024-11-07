@@ -148,7 +148,7 @@
       //window.location.href = "https://liff.line.me/2006266553-5WQAQkXv";
       liff.openWindow({
           //url: "https://liff.line.me/2006266553-5WQAQkXv", // URL for another LIFF app
-          url:"line://app/2006266553-5WQAQkXv?message=456"
+          url:"line://app/2006266553-5WQAQkXv?message=456",
           external: false
       });
      //liff.closeWindow();// 關閉liff頁面。
@@ -161,7 +161,7 @@
           .then(() => {
             document.getElementById("txt_id").value ='初始化成功'
 
-            var Get_ipId = "111.125.129.168"//document.getElementById("ipId").value
+            var Get_ipId = document.getElementById("ipId").value
             var Get_userId = document.getElementById("userId").value
             var Get_Password = document.getElementById("password").value
 
@@ -238,7 +238,7 @@
   </script>
 </head>
 <body>
-  <h1>IWA 登入頁面(111.125.129.168) 1118</h1>
+  <h1>IWA 登入頁面(111.125.129.168) 1123</h1>
   <input  id="ipId"  value="111.125.129.168">
   <input  id="userId"  placeholder="account" value="ist_1">
   <input  id="password"  placeholder="password" value="Cpower_12345">
