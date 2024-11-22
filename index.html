@@ -95,7 +95,7 @@
 
             if (liff.isInClient()) {// 判斷LIFF APP是否透過Line內部瀏覽器開啟
               
-              document.getElementById("txt_id").value =  '是LINE內部瀏覽器開啟'
+              //document.getElementById("txt_id").value =  '是LINE內部瀏覽器開啟'
                liff.sendMessages([   //Need access_token for api call, Please login first
                   {
                     type: "text",
@@ -104,24 +104,24 @@
                 ])
                 .then(() => {
                   console.log("message sent");
-                  document.getElementById("txt_id").value =  '發送成功';  
+                  //document.getElementById("txt_id").value =  '發送成功';  
                 })
                 .catch((err) => {
                   console.log("error", err);
-                  document.getElementById("txt_id").value =  '發送失敗' + err;  
+                  //document.getElementById("txt_id").value =  '發送失敗' + err;  
                 });
             }else{
               const isInClient = liff.isInClient()
               const isLoggedIn = liff.isLoggedIn()
               var isVersion = liff.getVersion()
-              document.getElementById("txt_id").value =  'Version: ' + isVersion + '是否為line內部開啟網頁:' + isInClient + '/是否已經登入:' + isLoggedIn
+              //document.getElementById("txt_id").value =  'Version: ' + isVersion + '是否為line內部開啟網頁:' + isInClient + '/是否已經登入:' + isLoggedIn
               liff.getContext()
             }
           })
           .catch((err) => {
             // Error happens during initialization
             console.log(err.code, err.message);
-            document.getElementById("txt_id").value = 'LIFF 初始化失敗或取得使用者資料失敗' + err
+            //document.getElementById("txt_id").value = 'LIFF 初始化失敗或取得使用者資料失敗' + err
           });
 
 
@@ -174,11 +174,11 @@
                         ])
                         .then(() => {
                           console.log("message sent");
-                          document.getElementById("txt_id").value =  '發送成功';  
+                         // document.getElementById("txt_id").value =  '發送成功';  
                         })
                         .catch((err) => {
                           console.log("error", err);
-                          document.getElementById("txt_id").value =  '發送失敗' + err;  
+                          //document.getElementById("txt_id").value =  '發送失敗' + err;  
                         });
 
 
