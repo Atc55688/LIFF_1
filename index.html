@@ -14,23 +14,6 @@
   <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/versions/2.1.13/sdk.js"></script>
   <script>
 
-    function initializeLiff_B(){
-      liff.init({ liffId: "2006266553-X1aYap8L", }) // 替換成你的 LIFF ID
-          .then(() => {
-            //document.getElementById("txt_id").value ='初始化成功'
-            //console.log("LIFF 初始化成功");
-            if (liff.isInClient()) {
-              //console.log("正在 LINE App 中運行");
-              //document.getElementById("txt_id").value ='正在 LINE App 中運行'
-            } else {
-              //console.log("不在 LINE App 中運行");
-             // document.getElementById("txt_id").value ='不在 LINE App 中運行'
-            }
-          })
-          .catch((err) => {
-            console.error("LIFF 初始化失敗", err);
-          });
-    }
     function initializeLiff() {
         //document.getElementById("show_title").value = "123456789";  
          //var liffID = '2006266553-X1aYap8L';
