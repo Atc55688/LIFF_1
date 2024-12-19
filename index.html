@@ -95,7 +95,7 @@
 
 
             if (liff.isInClient()) {// 判斷LIFF APP是否透過Line內部瀏覽器開啟
-              
+              /*
               //document.getElementById("txt_id").value =  '是LINE內部瀏覽器開啟'
                liff.sendMessages([   //Need access_token for api call, Please login first
                   {
@@ -110,7 +110,7 @@
                 .catch((err) => {
                   console.log("error", err);
                   //document.getElementById("txt_id").value =  '發送失敗' + err;  
-                });
+                });*/
             }else{
               const isInClient = liff.isInClient()
               const isLoggedIn = liff.isLoggedIn()
