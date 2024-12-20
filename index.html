@@ -71,7 +71,8 @@
       })
       .then(data => {
         console.log('成功資料：', data);
-        return getUser + "登入成功";
+        //return getUser + "登入成功";
+        return '登入成功'
       })
       .catch(error => {
         // 這裡的 error.message 即為後端提供的錯誤訊息
@@ -126,7 +127,8 @@
 */
              var apiUrl = "";//"http://" + in_ip + "/api/login";  // 替換成實際API的URL 250帳密是 //si_js01 / Js_12345
             apiUrl = "https://istdemo.chiconypower.com/setter_2_0/api/login"
-            var GetMyFun = callExternalAPI(apiUrl,"doraTest","Cpower_12345",Get_Line_UserId,LineGroupId,LineRoomId); // 呼叫API並傳入用戶訊息
+            //var GetMyFun = callExternalAPI(apiUrl,"doraTest","Cpower_12345",Get_Line_UserId,LineGroupId,LineRoomId); // 呼叫API並傳入用戶訊息
+            var GetMyFun = callExternalAPI(apiUrl,Get_userId,password,Get_Line_UserId,LineGroupId,LineRoomId); // 呼叫API並傳入用戶訊息
             
             //var apiUrl = "";//"http://" + in_ip + "/api/login";  // 替換成實際API的URL 250帳密是 //si_js01 / Js_12345
             //apiUrl = "http://istdemo.chiconypower.com/setter_2_0/api/login"
@@ -135,7 +137,7 @@
                             type: "text",
                             //text: "(帳號):" + Get_userId + "(密碼):" + Get_Password + "(代號):" + Get_Line_UserId  + '(Mail):' + Get_Line_mail,
                             //text: "account:" + Get_userId + "\n" + "password:" + Get_Password,
-                            text: "ip:" + Get_ipId + "\n" + "account:" + Get_userId + "\n" + "password:" + Get_Password + "\n UserID:" + Get_Line_UserId + "\nGroupID:" + "LineGroupId" + "\nRoomID:" + "LineRoomId" + "結果"+ GetMyFun
+                            text: "ip:" + Get_ipId + "\n" + "account:" + Get_userId + "\n" + "password:" + Get_Password + "\n UserID:" + Get_Line_UserId + "\nGroupID:" + "LineGroupId" + "\nRoomID:" + "LineRoomId" + "結果:"+ GetMyFun
                             //text: "ip:" + Get_ipId + "\n" + "account:" + Get_userId + "\n" + "password:" + Get_Password
                           },
                         ])
