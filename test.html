@@ -105,11 +105,13 @@ fetch(apiUrl, {
    alert(data  + '錯誤2')
   console.log(data); // 在這裏處理從 API 得到的 JSON 資料
 }).catch(async error => {
-   alert(error  + '錯誤3')
+   alert(error  + '???錯誤3')
     // 在 catch 區域處理錯誤
     try {
       const errorJson = await error.json(); // 嘗試解析錯誤的 JSON
-      console.error('Error JSON:', errorJson);
+       alert('errorJson1')
+        alert('errorJson1' + errorJson.message)
+      //console.error('Error JSON:', errorJson);
       alert(`錯誤訊息: ${errorJson.message || '未知錯誤'}`);
     } catch {
       console.error('Error:', error.message || error);
