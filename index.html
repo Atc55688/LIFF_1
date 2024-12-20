@@ -51,6 +51,8 @@
         //var jsonResponse = JSON.parse(response.getContentText());  // 取得API回應的內容並解析成JSON
         
         try {
+
+          //UrlFetchApp.fetch
   var response = UrlFetchApp.fetch(url, options);
   Logger.log(response.getContentText());
 } catch (e) {
