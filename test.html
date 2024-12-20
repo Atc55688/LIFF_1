@@ -107,6 +107,7 @@ fetch(apiUrl, {
 })
 .catch(error => {
    alert(error  + '錯誤3')
+   alert(error.json()  + '錯誤3')
   console.error('Error:', error);
 });
 
