@@ -24,7 +24,7 @@
     function callExternalAPI(url, in_getUser,in_getPassword,in_userId,in_groupId,in_roomId) {
       var getUser = in_getUser
       var getPassword = in_getPassword
-    
+    /*
       var options = {
         'method': 'post',
         'contentType': 'application/json',  // 指定內容類型為 JSON
@@ -39,36 +39,46 @@
           "loginType": 2
         })
       };
-    
+    */
 
 
-    
-      try{
-        // ist_1 / Cpower_12345
-        //var response = UrlFetchApp.fetch("http://111.125.129.168/api/setting/Users/login-verification",options);
-        //var response = UrlFetchApp.fetch(url,options);
-        //var jsonResponse = JSON.parse(response.getContentText());  // 取得API回應的內容並解析成JSON
-        try {
-            //UrlFetchApp.fetch
-            var response = fetch(url, options);
-            //Logger.log(response.getContentText());
-          } catch (e) {
-            //Logger.log('Error: ' + e.message);
-            return e.message
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          "username": getUser,
+          "password": getPassword,
+          "lang_id": 1,
+          "lineUserId": in_userId,
+          //"lineGroupId": in_groupId,
+          //"lineRoomId": in_roomId,
+          "grant_type": "password",
+          "loginType": 2
+        })
+      })
+      .then(response => {
+        if (!response.ok) {
+          // 非成功狀態碼時，先解析錯誤資訊
+          return response.json().then(data => {
+            // 假設後端回傳的錯誤格式中有 message 欄位
+            const errorMsg = data.message || '未知的錯誤訊息';
+            throw new Error(errorMsg);
+          });
         }
-        return "登入成功";  // 回傳解析後的JSON物件
-      }catch(e){
-        var response_str = e.message.toString();
-        var response_str_2 = e.message.data
-        //var jsonResponse = JSON.parse(e.response);
-        var startIndex = (response_str.toString()).indexOf('{');
-        var endIndex = (response_str.toString()).lastIndexOf('}');
-        var jsonStr = (response_str.toString()).substring(startIndex,endIndex+1);
-        var json = JSON.parse(jsonStr)
-        var tmp = json.message
-        //Logger.log("Error during API request: " + e.toString());
-        return tmp;  // 或者可以返回一個錯誤訊息
-      }
+        return response.json(); // 正常情況直接解析為 JSON
+      })
+      .then(data => {
+        console.log('成功資料：', data);
+        return getUser + "登入成功";
+      })
+      .catch(error => {
+        // 這裡的 error.message 即為後端提供的錯誤訊息
+        console.log('錯誤訊息：', error.message);
+        return error.message;
+      });
+            
      
     }
 
