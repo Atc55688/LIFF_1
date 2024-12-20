@@ -109,7 +109,7 @@ fetch(apiUrl, {
     // 在 catch 區域處理錯誤
     try {
       const errorJson = await error.json(); // 嘗試解析錯誤的 JSON
-       alert('errorJson1')
+       alert('errorJson1' + errorJson)
         alert('errorJson1' + errorJson.message)
       //console.error('Error JSON:', errorJson);
       alert(`錯誤訊息: ${errorJson.message || '未知錯誤'}`);
