@@ -108,7 +108,7 @@ fetch(apiUrl, {
    alert(error  + '???錯誤3')
     // 在 catch 區域處理錯誤
     try {
-      const errorJson = await error.json(); // 嘗試解析錯誤的 JSON
+      var errorJson = error.json(); // 嘗試解析錯誤的 JSON
        alert('errorJson1' + errorJson)
         alert('errorJson1' + errorJson.message)
       //console.error('Error JSON:', errorJson);
