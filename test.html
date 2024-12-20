@@ -109,10 +109,12 @@
             })
             .then(data => {
               console.log('成功資料：', data);
+               alert(data)
             })
             .catch(error => {
               // 這裡的 error.message 即為後端提供的錯誤訊息
               console.log('錯誤訊息：', error.message);
+               alert(error.message)
             });
 
 
