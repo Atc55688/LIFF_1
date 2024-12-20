@@ -108,12 +108,12 @@
               return response.json(); // 正常情況直接解析為 JSON
             })
             .then(data => {
-              console.log('成功資料：', data);
+             // console.log('成功資料：', data);
                alert(data)
             })
             .catch(error => {
               // 這裡的 error.message 即為後端提供的錯誤訊息
-              console.log('錯誤訊息：', error.message);
+              //console.log('錯誤訊息：', error.message);
                alert(error.message)
             });
 
