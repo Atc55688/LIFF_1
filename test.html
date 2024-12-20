@@ -95,6 +95,7 @@ fetch(apiUrl, {
   })
 })
 .then(response => {
+   alert('成功回傳')
   if (!response.ok) {
     throw new Error(`Network response was not ok: ${response.statusText}`);
   }
