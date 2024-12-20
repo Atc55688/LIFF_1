@@ -77,7 +77,7 @@
       .catch(error => {
         // 這裡的 error.message 即為後端提供的錯誤訊息
         console.log('錯誤訊息：', error.message);
-        return error.message;
+        return "登入失敗"//error.message;
       });
             
      
