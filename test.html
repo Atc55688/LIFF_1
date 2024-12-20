@@ -97,7 +97,9 @@
               })
             })
             .then(response => {
+               alert("1")
               if (!response.ok) {
+                 alert("2")
                 // 非成功狀態碼時，先解析錯誤資訊
                 return response.json().then(data => {
                   // 假設後端回傳的錯誤格式中有 message 欄位
