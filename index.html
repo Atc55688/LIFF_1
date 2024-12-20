@@ -13,7 +13,48 @@
   -->
   <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/versions/2.1.13/sdk.js"></script>
   <script>
+function sendMessage1(){
 
+var apiUrl = "";//"http://" + in_ip + "/api/login";  // 替換成實際API的URL 250帳密是 //si_js01 / Js_12345
+            apiUrl = "http://istdemo.chiconypower.com/setter_2_0/api/login"
+           // var GetMyFun = callExternalAPI(apiUrl,"doraTest","Cpower_12345",Get_Line_UserId,LineGroupId,LineRoomId); // 呼叫API並傳入用戶訊息
+            
+  
+
+  
+
+var getUser = "doraTest"
+      var getPassword = "Cpower_12345"
+    
+      var options = {
+        'method': 'post',
+        'contentType': 'application/json',  // 指定內容類型為 JSON
+        'payload': JSON.stringify({
+          "username": getUser+"",
+          "password": getPassword+"",
+          "lang_id": 1,
+          "lineUserId": "123",
+          //"lineGroupId": in_groupId,
+          //"lineRoomId": in_roomId,
+          "grant_type": "password",
+          "loginType": 2
+        })
+      };
+
+
+try {
+
+          //UrlFetchApp.fetch
+  var response = UrlFetchApp.fetch(url, options);
+  //Logger.log(response.getContentText());
+} catch (e) {
+  //Logger.log('Error: ' + e.message);
+return e.message
+        }
+
+
+  
+}
 
     function MyTestFun(){
       return "回傳結果"
@@ -176,6 +217,7 @@ return e.message
 
       <div style="align-items: center;"> 
          <button onclick="sendMessage()">送出</button>
+        <button onclick="sendMessage1()">送出1</button>
       </div>
 
   </div>
