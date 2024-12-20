@@ -112,10 +112,10 @@ fetch(apiUrl, {
        alert('errorJson1' + errorJson)
         alert('errorJson1' + errorJson.message)
       //console.error('Error JSON:', errorJson);
-      alert(`錯誤訊息: ${errorJson.message || '未知錯誤'}`);
+      alert(`錯誤訊息(1): ${errorJson.message || '未知錯誤'}`);
     } catch {
       console.error('Error:', error.message || error);
-      alert(`錯誤訊息: ${error.message || '未知錯誤'}`);
+      alert(`錯誤訊息(2): ${error.message || '未知錯誤'}`);
     }
   });
 /*.catch(error => {
