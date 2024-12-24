@@ -14,9 +14,6 @@
   <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/versions/2.1.13/sdk.js"></script>
   <script>
 
-    function MyTestFun(){
-      return "回傳結果"
-    }
     
 
     
@@ -119,16 +116,11 @@
             var LineUserId = ""
             var LineGroupId = "ID?"
             var LineRoomId = "ID?"
-/*            try{
-              LineUserId = Get_Line_UserId// 使用者 ID
-              LineGroupId = context.groupId;// 群組 ID，僅限於群組內
-              LineRoomId = context.roomId;// 聊天室 ID，僅限於聊天室內
-            }catch(e){}
-*/
+
              var apiUrl = "";//"http://" + in_ip + "/api/login";  // 替換成實際API的URL 250帳密是 //si_js01 / Js_12345
             apiUrl = "https://istdemo.chiconypower.com/setter_2_0/api/login"
             //var GetMyFun = callExternalAPI(apiUrl,"doraTest","Cpower_12345",Get_Line_UserId,LineGroupId,LineRoomId); // 呼叫API並傳入用戶訊息
-            var GetMyFun = callExternalAPI(apiUrl,Get_userId,Get_Password,Get_Line_UserId,LineGroupId,LineRoomId); // 呼叫API並傳入用戶訊息
+            //var GetMyFun = callExternalAPI(apiUrl,Get_userId,Get_Password,Get_Line_UserId,LineGroupId,LineRoomId); // 呼叫API並傳入用戶訊息
             
             //var apiUrl = "";//"http://" + in_ip + "/api/login";  // 替換成實際API的URL 250帳密是 //si_js01 / Js_12345
             //apiUrl = "http://istdemo.chiconypower.com/setter_2_0/api/login"
@@ -137,8 +129,8 @@
                             type: "text",
                             //text: "(帳號):" + Get_userId + "(密碼):" + Get_Password + "(代號):" + Get_Line_UserId  + '(Mail):' + Get_Line_mail,
                             //text: "account:" + Get_userId + "\n" + "password:" + Get_Password,
-                            text: "ip:" + Get_ipId + "\n" + "account:" + Get_userId + "\n" + "password:" + Get_Password + "\n UserID:" + Get_Line_UserId + "\nGroupID:" + "LineGroupId" + "\nRoomID:" + "LineRoomId" + "結果:"+ GetMyFun
-                            //text: "ip:" + Get_ipId + "\n" + "account:" + Get_userId + "\n" + "password:" + Get_Password
+                            //text: "ip:" + Get_ipId + "\n" + "account:" + Get_userId + "\n" + "password:" + Get_Password + "\n UserID:" + Get_Line_UserId + "\nGroupID:" + "LineGroupId" + "\nRoomID:" + "LineRoomId" + "結果:"+ GetMyFun
+                            text: "ip:" + Get_ipId + "\n" + "account:" + Get_userId + "\n" + "password:" + Get_Password
                           },
                         ])
                         .then(() => {
