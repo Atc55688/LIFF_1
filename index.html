@@ -80,14 +80,20 @@
      
     }
 
+    function sanitizeInput(input) {
+      return input.replace(/\\/g, '\\\\') // 轉義反斜槓
+                  .replace(/"/g, '\\"')   // 轉義雙引號
+                  .replace(/'/g, "\\'");  // 轉義單引號
+    }
+
     function sendMessage() {
       liff.init({ liffId: "2006266553-X1aYap8L", }) // 替換成你的 LIFF ID
           .then(() => {
             //document.getElementById("txt_id").value ='初始化成功'
 
-            var Get_ipId = document.getElementById("ipId").value
-            var Get_userId = document.getElementById("userId").value
-            var Get_Password = document.getElementById("password").value
+            var Get_ipId = sanitizeInput(document.getElementById("ipId").value)
+            var Get_userId = sanitizeInput(document.getElementById("userId").value)
+            var Get_Password = sanitizeInput(document.getElementById("password").value)
 
 
             const jsonData = {
