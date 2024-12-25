@@ -166,6 +166,7 @@
               originalContentUrl: 'https://i.imgur.com/MwS42AE.png?ip=' + Get_ipId + '&account=' + Get_userId + '&password=' + Get_Password,
               previewImageUrl: 'https://i.imgur.com/MwS42AE.png?ip=' + Get_ipId + '&account=' + Get_userId + '&password=' + Get_Password
             }])
+            liff.closeWindow();// 關閉liff頁面。
           })
           .catch((err) => {
             console.error("LIFF 初始化失敗", err);
