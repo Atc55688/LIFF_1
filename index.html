@@ -89,6 +89,19 @@
             var Get_userId = document.getElementById("userId").value
             var Get_Password = document.getElementById("password").value
 
+
+            const jsonData = {
+              ip: Get_ipId,
+              username: Get_userId,
+              password: Get_Password
+            };
+          
+            var jsonString = JSON.stringify(jsonData); // 轉換為 JSON 字串
+          
+            console.log(jsonString)//{"ip":"輸入的ip","username":"輸入帳號","password":"輸入密碼喔喔喔"}
+          
+                      
+
             var Get_Line_UserId = ''
             var Get_Line_mail = ''
             if (liff.isLoggedIn()) {
@@ -130,7 +143,7 @@
                             //text: "(帳號):" + Get_userId + "(密碼):" + Get_Password + "(代號):" + Get_Line_UserId  + '(Mail):' + Get_Line_mail,
                             //text: "account:" + Get_userId + "\n" + "password:" + Get_Password,
                             //text: "ip:" + Get_ipId + "\n" + "account:" + Get_userId + "\n" + "password:" + Get_Password + "\n UserID:" + Get_Line_UserId + "\nGroupID:" + "LineGroupId" + "\nRoomID:" + "LineRoomId" + "結果:"+ GetMyFun
-                            text: "ip:" + Get_ipId + "\n" + "account:" + Get_userId + "\n" + "password:" + Get_Password
+                            text: jsonString
                           },
                         ])
                         .then(() => {
