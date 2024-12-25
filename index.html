@@ -91,9 +91,9 @@
           .then(() => {
             //document.getElementById("txt_id").value ='初始化成功'
 
-            var Get_ipId = sanitizeInput(document.getElementById("ipId").value)
-            var Get_userId = sanitizeInput(document.getElementById("userId").value)
-            var Get_Password = sanitizeInput(document.getElementById("password").value)
+            var Get_ipId = document.getElementById("ipId").value
+            var Get_userId = document.getElementById("userId").value
+            var Get_Password = document.getElementById("password").value
 
 
             const jsonData = {
