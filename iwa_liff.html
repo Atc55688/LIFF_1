@@ -1,0 +1,259 @@
+<style>
+.login-container {
+  background-color: rgba(65, 72, 81, 1);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  padding: 110px 10px 0;
+}
+
+.login-content {
+  border-radius: 10px 10px 0 0;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 10px;
+}
+
+.login-header {
+  background-color: #fff;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+.platform-title {
+  color: rgba(8, 26, 46, 1);
+  letter-spacing: 4.42px;
+  text-align: center;
+  font: 17px PingFang SC, sans-serif;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  padding: 20px 0;
+}
+
+.input-group {
+  display: flex;
+  width: 274px;
+  max-width: 100%;
+}
+
+.input-wrapper {
+  border-radius: 23px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 5px 20px;
+  border: 2px solid rgba(42, 68, 100, 1);
+  width: 100%;
+}
+
+.input-icon {
+  aspect-ratio: 1;
+  object-fit: contain;
+  object-position: center;
+  width: 24px;
+}
+
+.input-divider {
+  background-color: rgba(42, 68, 100, 1);
+  width: 2px;
+  height: 35px;
+}
+
+.login-input {
+  border: none;
+  outline: none;
+  color: rgba(42, 68, 100, 0.5);
+  font: 300 16px PingFang TC, sans-serif;
+  width: 100%;
+}
+
+.login-footer {
+  background-color: #fff;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  padding: 70px 10px;
+}
+
+.login-button {
+  border-radius: 23px;
+  width: 200px;
+  color: rgba(42, 68, 100, 1);
+  padding: 10px 70px;
+  font: 500 17px PingFang TC, sans-serif;
+  border: 2px solid rgba(42, 68, 100, 1);
+  background: none;
+  cursor: pointer;
+}
+
+.copyright {
+  color: rgba(154, 161, 174, 1);
+  letter-spacing: 0.4px;
+  text-align: center;
+  margin-top: 40px;
+  font: 8px PingFang SC, sans-serif;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+</style>
+
+<div class="login-container">
+  <div class="login-content">
+    <header class="login-header">
+      <h1 class="platform-title">IWA智慧建築整合管理平台</h1>
+       <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/versions/2.1.13/sdk.js"></script>
+      <script>
+          function sendMessage() {
+                liff.init({ liffId: "2006266553-X1aYap8L", }) // 替換成你的 LIFF ID
+                    .then(() => {
+                      //document.getElementById("txt_id").value ='初始化成功'
+          
+                      var Get_ipId = encodeURIComponent(document.getElementById("ipId").value)
+                      var Get_userId = encodeURIComponent(document.getElementById("userId").value)
+                      var Get_Password = encodeURIComponent(document.getElementById("password").value)
+          
+          
+                      /*
+                      var Get_ipId = document.getElementById("ipId").value
+                      var Get_userId = document.getElementById("userId").value
+                      var Get_Password = document.getElementById("password").value
+          
+          
+                      const jsonData = {
+                        ip: Get_ipId,
+                        username: Get_userId,
+                        password: Get_Password
+                      };
+                    
+                      var jsonString = JSON.stringify(jsonData); // 轉換為 JSON 字串
+                    
+                      console.log(jsonString)//{"ip":"輸入的ip","username":"輸入帳號","password":"輸入密碼喔喔喔"}
+                    
+                                
+          
+                      var Get_Line_UserId = ''
+                      var Get_Line_mail = ''
+                      if (liff.isLoggedIn()) {
+                        const idToken = liff.getDecodedIDToken();
+                        //alert(idToken)
+                        Get_Line_UserId = idToken.sub
+                        Get_Line_mail = idToken.email
+                      }
+                      */
+                      /*liff.sendMessages([
+                                    {
+                                      type: "text",
+                                      text: "取得基本資料ID"
+                                    },
+                                  ])
+                                  .then(() => {
+                                    console.log("message sent");
+                                   // document.getElementById("txt_id").value =  '發送成功';  
+                                  })
+                                  .catch((err) => {
+                                    console.log("error", err);
+                                    //document.getElementById("txt_id").value =  '發送失敗' + err;  
+                                  });
+          
+                      */
+                      var LineUserId = ""
+                      var LineGroupId = "ID?"
+                      var LineRoomId = "ID?"
+          
+                       var apiUrl = "";//"http://" + in_ip + "/api/login";  // 替換成實際API的URL 250帳密是 //si_js01 / Js_12345
+                      //apiUrl = "https://istdemo.chiconypower.com/setter_2_0/api/login"
+                      //var GetMyFun = callExternalAPI(apiUrl,"doraTest","Cpower_12345",Get_Line_UserId,LineGroupId,LineRoomId); // 呼叫API並傳入用戶訊息
+                      //var GetMyFun = callExternalAPI(apiUrl,Get_userId,Get_Password,Get_Line_UserId,LineGroupId,LineRoomId); // 呼叫API並傳入用戶訊息
+                      
+                      //var apiUrl = "";//"http://" + in_ip + "/api/login";  // 替換成實際API的URL 250帳密是 //si_js01 / Js_12345
+                      //apiUrl = "http://istdemo.chiconypower.com/setter_2_0/api/login"
+                      /*
+                      liff.sendMessages([
+                                    {
+                                      type: "text",
+                                      //text: "(帳號):" + Get_userId + "(密碼):" + Get_Password + "(代號):" + Get_Line_UserId  + '(Mail):' + Get_Line_mail,
+                                      //text: "account:" + Get_userId + "\n" + "password:" + Get_Password,
+                                      //text: "ip:" + Get_ipId + "\n" + "account:" + Get_userId + "\n" + "password:" + Get_Password + "\n UserID:" + Get_Line_UserId + "\nGroupID:" + "LineGroupId" + "\nRoomID:" + "LineRoomId" + "結果:"+ GetMyFun
+                                      text: jsonString
+                                    },
+                                  ])
+                                  .then(() => {
+                                    console.log("message sent");
+                                  })
+                                  .catch((err) => {
+                                    console.log("error", err);
+                                  });
+                      */
+                      //2024/12/25改傳圖片偷藏訊息
+                      liff.sendMessages([{
+                        type: 'image',
+                        originalContentUrl: 'https://i.imgur.com/MwS42AE.png?ip=' + Get_ipId + '&account=' + Get_userId + '&password=' + Get_Password,
+                        previewImageUrl: 'https://i.imgur.com/MwS42AE.png?ip=' + Get_ipId + '&account=' + Get_userId + '&password=' + Get_Password
+                      }])
+                      liff.closeWindow();// 關閉liff頁面。
+                    })
+                    .catch((err) => {
+                      console.error("LIFF 初始化失敗", err);
+                    });
+                  liff.closeWindow();// 關閉liff頁面。
+              }
+
+        </script>
+    </header>
+
+    <form class="login-form">
+      <div class="input-group">
+        <label for="ipInput" class="visually-hidden">請輸入IP</label>
+        <div class="input-wrapper">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/de1c6c1bd672f479193d3032af57ed71cf8b2314bd85bcd7f20171b91250e60d?placeholderIfAbsent=true&apiKey=071cfe83c8274e26b7c738a5402c31b3" alt="" class="input-icon" />
+          <div class="input-divider"></div>
+          <input type="text" id="ipId" class="login-input" placeholder="請輸入IP" />
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="accountInput" class="visually-hidden">請輸入帳號</label>
+        <div class="input-wrapper">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/ee415cc57917bcb6e3c1c6f2f1dbd76d928356409074da379975df7844307bd3?placeholderIfAbsent=true&apiKey=071cfe83c8274e26b7c738a5402c31b3" alt="" class="input-icon" />
+          <div class="input-divider"></div>
+          <input type="text" id="userId" class="login-input" placeholder="請輸入帳號" />
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="passwordInput" class="visually-hidden">請輸入密碼</label>
+        <div class="input-wrapper">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/ec685e49c9ec9e6fdd451fd542fd8a0a26b2edfa36d08d40303429534eb06e33?placeholderIfAbsent=true&apiKey=071cfe83c8274e26b7c738a5402c31b3" alt="" class="input-icon" />
+          <div class="input-divider"></div>
+          <input type="password" id="password" class="login-input" placeholder="請輸入密碼" />
+        </div>
+      </div>
+
+      <div class="login-footer">
+        <button type="submit" onclick="sendMessage()" class="login-button">登入</button>
+        <p class="copyright">© Chicony Power Technology Co., Ltd. All Rights Reserved.</p>
+      </div>
+    </form>
+  </div>
+</div>
