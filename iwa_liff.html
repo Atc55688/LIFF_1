@@ -214,11 +214,18 @@
                                   });
                       */
                       //2024/12/25改傳圖片偷藏訊息
-                      liff.sendMessages([{
+                      /*liff.sendMessages([{
                         type: 'image',
                         originalContentUrl: 'https://i.imgur.com/MwS42AE.png?ip=' + Get_ipId + '&account=' + Get_userId + '&password=' + Get_Password,
                         previewImageUrl: 'https://i.imgur.com/MwS42AE.png?ip=' + Get_ipId + '&account=' + Get_userId + '&password=' + Get_Password
                       }])
+                      */
+                      liff.sendMessages([{
+                        type: 'image',
+                        originalContentUrl: 'https://iwapublic.s3.ap-northeast-1.amazonaws.com/Banner_0.png?ip=' + Get_ipId + '&account=' + Get_userId + '&password=' + Get_Password,
+                        previewImageUrl: 'https://iwapublic.s3.ap-northeast-1.amazonaws.com/Banner_0.png?ip=' + Get_ipId + '&account=' + Get_userId + '&password=' + Get_Password
+                      }])
+                      
                       liff.closeWindow();// 關閉liff頁面。
                     })
                     .catch((err) => {
