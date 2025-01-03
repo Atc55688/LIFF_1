@@ -1,161 +1,553 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Title</title>
-  <!--
-  <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
-  
-  <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/versions/2.1.13/sdk.js"></script>
-  最新版本看起來是2.24.0
-  -->
-  <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/versions/2.1.13/sdk.js"></script>
-  <script>
-  const API_URL = "https://data.ntpc.gov.tw/api/datasets/04958686-1b92-4b74-889d-9f34409b272b/json";//"https://api.atlassian.com/flags/api/v2/frontend/clientSdkKey/aid-frontend_web";//"https://istdemo.chiconypower.com/setter/api/setting/Generals/language-type";
-   
-    function initializeLiff() {
-        liff.init({
-            liffId: "2006266553-5WQAQkXv", // Use own liffId
-          })
-          .then(() => {
-            var user_token = liff.getAccessToken()
-            document.getElementById("txt_id1").value =  '使用者的token:' + user_token;  
-
-
-            liff.getProfile()
-                .then(profile => {
-                    const userId = profile.userId;
-                    console.log(userId); // 這裡可以使用 userId
-                    // 可以在這裡執行其他需要 userId 的操作
-                  document.getElementById("txt_id2").value =  '使用者的UserID:' + userId;  
-                })
-                .catch(error => {
-                    console.error('Error getting profile:', error);
-                });
-                      
-            /*
-            // Start to use liff's api
-            document.getElementById("txt_id").value = "LIFF 初始化成功55688";  
-            var os = liff.getOS();
-            document.getElementById("txt_id").value =  os;  */
-            /*
-            const accessToken = liff.id;
-            document.getElementById("txt_id1").value =  '拿到token : ' + accessToken;
-            const isInClient = liff.isInClient()
-            document.getElementById("txt_id2").value =  '拿到isInClient(這個要true才行) : ' + isInClient;
-            const isisLoggedIn = liff.isLoggedIn()
-            document.getElementById("txt_id3").value =  '拿到isisLoggedIn(這個要true才行) : ' + isisLoggedIn;
-*/
-
-            
-
-             liff.sendMessages([
-                          {
-                            type: "text",
-                            text: "Hello, World!(LIFF發送訊息by In_Data.html)" + document.getElementById("txt_id1").value + " / " + document.getElementById("txt_id2").value+"",
-                          },
-                        ])
-                        .then(() => {
-                          console.log("message sent");
-                          document.getElementById("txt_id3").value =  '發送成功(sendMessages)111111111111';  
-                        })
-                        .catch((err) => {
-                          console.log("error", err);
-                          document.getElementById("txt_id3").value =  '發送失敗(sendMessages)111111111111' + err;  
-                        });
-
-            
-            // 取得 URL 中的查詢參數
-            const urlParams = new URLSearchParams(window.location.search);
-            const message = urlParams.get("message") || "沒訊息";
-            
-            // 將參數設置到 textarea 的 value 屬性
-            document.getElementById("txt_id").value = message;//這邊希望LIFT的URL帶參數過來顯示
-
-            //----------------------------------------------------------------------------------------------------------------------
-            callApiAndSendResult();
-            /*
-            // 執行一個API，回傳結果  用 LIFF打去LINE上面
-            //https://istdemo.chiconypower.com/setter/api/setting/Generals/language-type
-            const response = await fetch(API_URL, {
-                method: 'GET', // 或 'POST', 'PUT' 等，視需求而定
-                headers: {
-                    'Content-Type': 'application/json', // 若 API 接收 JSON 格式，則設定此 header
-                    // 其他 headers，例如 Authorization, API Key 等
-                },
-                // 如果是 POST 請求，可以加入 body 資料
-                // body: JSON.stringify({ key1: 'value1', key2: 'value2' })
-            });
-    
-            // 檢查回應的狀態碼
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-    
-            // 解析回傳的 JSON 結果
-            var result = await response.json();
-            liff.sendMessages([
-              {
-                type: "text",
-                text: "API回傳結果:" + result,
-              },
-            ])
-            .then(() => {
-              console.log("message sent");
-              document.getElementById("txt_id3").value =  '發送成功(sendMessages)::::' + result;  
-            })
-            .catch((err) => {
-              console.log("error", err);
-              document.getElementById("txt_id3").value =  '發送失敗(sendMessages)' + err;  
-            });
-*/
-          })
-          .catch((err) => {
-            // Error happens during initialization
-            console.log(err.code, err.message);
-          });
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>.IWA智慧建築整合管理平台 | 帳號登入</title>
+  <style>
+    /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+    html {
+      line-height: 1.15;
+      -webkit-text-size-adjust: 100%
     }
 
+    body {
+      margin: 0
+    }
 
-    function callApiAndSendResult() {
-      try {
-        document.getElementById("txt_id3").value = '進入執行1'
+    main {
+      display: block
+    }
 
-        fetch(API_URL)
-        .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-              
-                return response.json();
-            })
-            .then(data => {
-                console.log(data)
-               document.getElementById("txt_id3").value = data // 顯示在div上面
-               
-            })
-      } catch (error) {
-          console.error("API 呼叫或訊息傳送失敗:", error);
-          alert("無法送出訊息，請重試");
-      }
-  }
+    h1 {
+      font-size: 2em;
+      margin: .67em 0
+    }
 
-    
-    window.onload = function () {
-      initializeLiff();
-    };
-  </script>
+    hr {
+      box-sizing: content-box;
+      height: 0;
+      overflow: visible
+    }
+
+    pre {
+      font-family: monospace, monospace;
+      font-size: 1em
+    }
+
+    a {
+      background-color: transparent
+    }
+
+    abbr[title] {
+      border-bottom: none;
+      text-decoration: underline;
+      text-decoration: underline dotted
+    }
+
+    b,
+    strong {
+      font-weight: bolder
+    }
+
+    code,
+    kbd,
+    samp {
+      font-family: monospace, monospace;
+      font-size: 1em
+    }
+
+    small {
+      font-size: 80%
+    }
+
+    sub,
+    sup {
+      font-size: 75%;
+      line-height: 0;
+      position: relative;
+      vertical-align: baseline
+    }
+
+    sub {
+      bottom: -.25em
+    }
+
+    sup {
+      top: -.5em
+    }
+
+    img {
+      border-style: none
+    }
+
+    button,
+    input,
+    optgroup,
+    select,
+    textarea {
+      font-family: inherit;
+      font-size: 100%;
+      line-height: 1.15;
+      margin: 0
+    }
+
+    button,
+    input {
+      overflow: visible
+    }
+
+    button,
+    select {
+      text-transform: none
+    }
+
+    [type=button],
+    [type=reset],
+    [type=submit],
+    button {
+      -webkit-appearance: button
+    }
+
+    [type=button]::-moz-focus-inner,
+    [type=reset]::-moz-focus-inner,
+    [type=submit]::-moz-focus-inner,
+    button::-moz-focus-inner {
+      border-style: none;
+      padding: 0
+    }
+
+    [type=button]:-moz-focusring,
+    [type=reset]:-moz-focusring,
+    [type=submit]:-moz-focusring,
+    button:-moz-focusring {
+      outline: 1px dotted ButtonText
+    }
+
+    fieldset {
+      padding: .35em .75em .625em
+    }
+
+    legend {
+      box-sizing: border-box;
+      color: inherit;
+      display: table;
+      max-width: 100%;
+      padding: 0;
+      white-space: normal
+    }
+
+    progress {
+      vertical-align: baseline
+    }
+
+    textarea {
+      overflow: auto
+    }
+
+    [type=checkbox],
+    [type=radio] {
+      box-sizing: border-box;
+      padding: 0
+    }
+
+    [type=number]::-webkit-inner-spin-button,
+    [type=number]::-webkit-outer-spin-button {
+      height: auto
+    }
+
+    [type=search] {
+      -webkit-appearance: textfield;
+      outline-offset: -2px
+    }
+
+    [type=search]::-webkit-search-decoration {
+      -webkit-appearance: none
+    }
+
+    ::-webkit-file-upload-button {
+      -webkit-appearance: button;
+      font: inherit
+    }
+
+    details {
+      display: block
+    }
+
+    summary {
+      display: list-item
+    }
+
+    template {
+      display: none
+    }
+
+    [hidden] {
+      display: none
+    }
+
+    /*# sourceMappingURL=normalize.min.css.map */
+
+    :root {
+      --base-width: 375px;
+      --base-height: 531px;
+    }
+
+    body {
+      font-family: PingFang SC;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #414851;
+      position: relative;
+    }
+
+    button:focus {
+      outline: unset;
+    }
+
+    .login {
+      width: 95%;
+      height: calc(100vh - 49px);
+      margin-top: 49px;
+      min-height: var(--base-height);
+      position: relative;
+      background-color: #ffffff;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      text-align: center;
+      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+      box-sizing: border-box;
+      padding: 55px 40px 0 39px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .login_logo {
+      position: absolute;
+      top: -35px;
+      width: 100%;
+    }
+
+    .login_logo img {
+      width: 74px;
+      height: 74px;
+      object-fit: contain;
+    }
+
+    .login_content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+    }
+
+    .login_content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      height: 100%;
+      width: 100%;
+    }
+
+    .login_content_title {
+      font-size: 17px;
+      font-family: PingFang SC;
+      font-weight: normal;
+      line-height: 23.8px;
+      letter-spacing: 0.15em;
+      margin-bottom: 20px;
+      text-align: center;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+    }
+
+    .login_content_group {
+      width: 100%;
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* row start */
+
+    .row {
+      display: flex;
+      position: relative;
+      height: 45px;
+      width: 274px;
+      margin-bottom: calc(20px + 0.5vh);
+      border: 1.5px solid #2a4464;
+      transition: border-color 0.5s ease;
+      border-radius: 22.5px;
+      box-sizing: border-box;
+      align-items: center;
+      justify-content: center;
+      outline: none;
+    }
+
+    .row:last-child {
+      margin-bottom: 0;
+    }
+
+    .row:has(input:focus),
+    .row:has(input:focus) .img {
+      border-color: #F8B62D;
+    }
+
+    .row input:focus {
+      border: none;
+    }
+
+    .row_img {
+      width: 20%;
+      height: 80%;
+    }
+
+    .row_input {
+      width: 80%;
+      height: 100%;
+      display: flex;
+    }
+
+    .row:has(.row_input--error) {
+      border-color: #FF2D55;
+    }
+
+    /* row end */
+
+    /* input start  */
+
+    .input {
+      width: 90%;
+      height: 100%;
+      font-size: 16px;
+      padding: 0px 0px 0 17px;
+      border: none;
+      outline: none;
+      box-sizing: border-box;
+    }
+
+    /* input end  */
+
+    /* img start  */
+
+    :root {
+      --ip: url('data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAXCAYAAADtNKTnAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAJCSURBVHgBlVS9bhNBEJ6ds0WAxggIBQjZEZH4EcJYINHhCBcuky5dYhEEHccTJDxBTEcRo/MbuKRw4NJRoPjSGBcIX4mEi0OIKOh2b9k5e487y+ccX3M7s7PffTszOwymcLP+ooicbzKAx8osS4CCWnsBgIOIlkA8GLx/68bPsLhx+8nTJjD2EuaBMVdK+eZLd6+pXUZEUHvWU5SrcDpIWf3yUoX9+HZokwMjBSDLUZiUrmTSPOb8Qr+7xwLOS0EQNMgfI9u+VdsyQ3GTHAz/qZXWb1+8cm3Lm5ZQrm4W/JzRlMA2Ji5P/ahkXCnd36V9reCYi7VZBITvrnNy9fo9WzC2rv5WUK6FPOIJqoPRNVQFdtIINBy1LxGjpKrqVVFqFQQhDiADzvh+W69VkssY3xzYlgsZ4CTVFpAaSVtFlbgsJFSMmOmREkdbZ/P5jSwkKERVr1U6bAwY62iHUmWepqZYNWl/OyKRsoOUpOhKUhbPGcZuGhERnM/9alLcJN4d7LfaBtVetfCCclXHclg5bxjrizceeBeXH/4cff3s0eFry3ef5wzfiuIgbAlzNOwdhQ9w3Im5Ib1YyAqlor/fKtEyLDGVLAjgNfwHqDH1OjEK7tS2PsqY3DkqLKWioc1EswnOG/G+SSFwAyESqo24MXId71Kx8ocxqKdxBIirgw/vjlJJQqLh4afFpQol+NEMjh010drTTgYpUPnpJR4nyE6/21qbFYtpJHnOV6JJNp4zjbTYVJKw7EKs0Nug77w58xcz7/3N0mbp8gAAAABJRU5ErkJggg==');
+      --ip_focus: url('data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAXCAYAAADtNKTnAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAH5SURBVHgBlVRLUttAEO1uJ5KdlXMDfICodIOYZQwbncD2CeycAPsEUW4AJ8CL4LADToALF1Xs0BFURRX2yGiaGX0HG2HxNtL09Lx5/ZlG2MLqv3sAUg6Q+CcwugDcBsAQkBfEeBoLuml5i8A8g+ZifeH4ynkEHwIDKeHvt+M7f4dEXDi3jOxCTTDjtHV0N9H/lCvYIgiAeGyLp+/N3hIZNx3meJjY89uRT57/OePkX+cAOX4sNhlOrejpN3pBuHP7udte27Gv5PdTA4R21OgQQXxiKqgiSC7wFmFTNMaFIoR21HwZUVqBFARyUkVgEqlQfSM3XWIocxGL+AZqwF59OSsWDC6Zmy3vIYAaSNQUC2hrksKgE1eHJGnIUkmoSRb5Wlgv/TokIOOuoeSaVJJmpYHG+9TofUQsKqqKMaMsSVlIfBBZ8Z8qorRPpK/9MlNg9e7PSCdJdV9ZMoSBsOVtNHf6q/M09uTwpTPSdgTuGyomaUSZk7CTrq2V2FyFehKdlAyykkk5/QRBoaJQkmM9/3GlPt0955P3ZR8thyWhAfVa9Ua4hyOQ0Wb6VpWB1i/VsXvCagAMtjubtp2ax/e+MvrvESDz5GtvufO+ECog5mrSwZtBNVPV8N7zpSoSS9AhlJMsUFNuWOVbSaLLrhKtiPiaxebwoznzCsKN6zqzksUsAAAAAElFTkSuQmCC');
+      --account: url('data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAKvSURBVHgBpVW9b9NQEL+zXVGhVrKEYGFohBBq+FADQqhb3SqV2DAjEx5SqRJD27+gZYKtYUMiUpMJMUE3pFbC2TpAMQtk4MN7K2EQlKL4+bjnxsVxbNeUn5Tk5d67+93de3eHcARKxqJ+cui7CYE6BUg6AehSroDiBCTav8So7dp1L0sfszbGb86XVCGWiciCI4CITaGq9zsvH7vJPTVNoVytLapB8JS9nYRiqCCReeb8dW/n05t3uQQXq7UVDusBL4dTDDn82QKiYXZbT+zpLDdPn7uGO5+37UiISeP8s5y0ikCeQMXsbDxpR7LyTG0RFViFFHDkSx82G/W+CGTOMQiepykEBPOdzcZ6XLb7ZXuLvZVLY9AhmDx14caz3Y+vPSUSqr6/BhnYF2I9lVjTWhkqOvbshQSXqzWDUjz5H3AURnnm3lhIQIh38w4Pa1olTa4IYeTpofLbOkgRUSXvoIK4Ju8oLuv9X87TI/l85YJfD8FRQHT5sE0g2kjaBN+AFVV1NgO5xQmOCa3oQVkLhOAhodvzvFJAzdMOlMFLCzc0ClgPEO3ORqOd3L8yOzclgsDi9FkZBIcpkgVm9hlHav7siiXXbmZ2ygjjhlVSNG01aYPvoBkSlGfnFrhZ1WNbzvvNxlX4R1yq1r4mMmGGz/REt9uSaYptuHA8uIcrfkHs5HpI4HAamDkegdlrfIUhz1Ps4gOAFfnb1005xLfxQ3mDJEI4mLjvxFsNr23uptMDBOFlqeortlyCvyxhgQmi1r4/4sjxKMfoiPajQqDcGig4Tk0gxHTHbroDBJkkxeEEvn87Mi4xMNF2Xcc7OzbRChRFTrRCI1PWC38/5Eu9I/X793Igo0FNW8CD/KZVrhyhL/Z8/1FWveQSxFEyLH10aGhCrgXAt71u1y1ShH8A2XcadHpYiCIAAAAASUVORK5CYII=');
+      --account_focus: url('data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAKUSURBVHgBlVZRbtpAEJ2xwQ5SpXIEf1ZRkvoIzl8bWhVOkOQEbU4A3ICeIOQEgCqg6g++QVGhaf/i3oCqqMaAPZ01CTVmvcCT0NqzM++td2d2QFBg+uXY1he5MiK9BERb2JBgQkgTfm+Tr3UKlaGn4kCZ0e+fOAhYBQIHdgHBpZl+nSWkpQ1/e2cfkHCwF7kA+6EZPvjds5pcPwHhxNtRzWBykcgjxCKHleU+0Di6GN1IBRTk3pLCyrPS/XDt239hIeW/8mNxaxmE9ULpW21DwO/bHBA+SMh5D6Mr4+L7Xdo++3zyHiJsyGIopPPC27G7ihcqFA0gA/kg35GSUK6TFYM6rndCExnD7hYciKMZTBTTjv9J8LKATvhO4QiBsbyU2WdGWFbF6fqKVyNAB5TAmt+yraQlPjPEqioqAnLEmKNd24NQFHk+6522OcuG8YIodGAXCK1YACSploEyp2AZ9gWueHN7unu8pCEXGt9DYmXiB9Y+gTlW8rjcZc4eEzYNCJtY+vErPSmKDSLNQdSrcjGKCzPHleYSwFVySougkV/8qWPFy0zFwuufHg9N8Qu6J1X+slpynu+z4YprSakqJdd4M7pRkadhlsZ1HtwNox62Y4HHkvb+K2v7HnoKaCVePPPVfVzp8VVBFNafZriZ2EH39BYOgN87ayZvA76/amvZpwfO8xYPiTREjwLtXNWxRMFpUdQSi1pHETTN0uh6S4BadnFuRgMuPDtJIgLYq7Og0NO16PFc8tzx4DLdlDjrhsZ8ep48v42GI0QCM7zd/JJ9Qa4ZTCvp5JD35O7xVXZ+b2HCh1g7Ko0/yiZRFbkS0vg2jf9RFDdIRSFp0Db96Z0qpZUCSVDLKoJReA5z//chNfIP/BgW3AO1NwMAAAAASUVORK5CYII=');
+      --account_error: url('data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAJkSURBVHgBlVZRbtpAEJ1ZcKV+1UfwZxWF1kdwThBHClH/Qk7Q5gSYG9AThPxVgTbmBHCDokLT/sW9AVUjtRKsp7NrSm2zXsyT1l52Z95bz87sgmABHbV9aGIIlL4GFP5mdAkES0CIQazGOIsTGwcaiY/PA0DscjeA/ZhCY3VVJSR2yF9dvGPySU1y0HbSeWS/yDSJJfIIiLpGGqIpt4TFXW6h0Qawj/O7a6OAhTwBCWf4MJxtbV++8cCRn7nr7mpgD7/cRQUB8tlBykcwIU07+PXjbXmYjttv2btv9CE6wcVoqrpiQzKBKjhybBxvNsaVPlmCaAidMUQeHIw/S8tkoHmVAOf3Kdiwdi6N49IJrX4IpxsBCvYYRuSHXn5I71kuDEYQBurV5Kr0wA5X53nrPGbbGRNz3ssA9gEz3iaYUs3sEbJTCPXh/hOog4QTYcaNzyDk8AiPY+DVcWQBTCqMFekAZDrAb59+lCd1sQkOVUPthcFfhTMT4CMAoFOa7cOvdQ+TuDIV8fuHhF8D1Tglu/xlUdEgExC8ymKV8pmD89G1jXxHbDHqgTpV85AUa4GspFWYNhBYc9PLKujlfiX4MNKVLjZqve0UgU+t9g0cAD4oB4XTIE2jre7WqHVxz8//aYi8yWJ1YruxdMGl8l4tKjc8wPnwalfAD11InUnJWDvwksYgRQLpKtsXxwn4qY6QoKjIG/vEi8rtX/HCUSLy2U3hS+pCXUhP67Nycpjv5KN2pzK/d6H+BES4GL43TaLNUwsJuuQMUWFzi6Rc2YAxh+TWWi9QE+Rx+J6LF/A7/XlIjfwFmub+zvWDSDEAAAAASUVORK5CYII=');
+      --password: url('data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAZCAYAAAArK+5dAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAGvSURBVHgBzVVNTsJAFH6vrTsX5Qa48yfGeoMSca03ACPu8QSUE6g7EyTWW5hAAjewGwmJC+sNusFNp33OSGsGLHSKYvySZuZN3/u++XnzBiEHZbtpbm5ManEMFiGVxZgGmhcZ2s348dbPi8dlP3eqjaYG0CIAMzMY0Y10vb1MaKHAbrXh8KY1600+EpgEaEoqfqzrlUUiWib58UU9JUeggDfOO2OlUa+79dzvlnREG4imhERlZOweiqyAC7yKwKkHOxz1XG/ex7LrZmgYA759lrBjgMq4fzeEvBXsH52fpuQ8+DqLXMAbugExPPsiIqxl+X0TiBAP0j5DfIAlGA07Ht+CZAKxrSTAD62cdl96nczZzyFI4kw1gdWxdoFMzGTRdrVh68gvFoEtbJEZeQQ6wJWcSWAYvnwnDNmZL2fAyWfsHH6guXhgzOHdtjS2XvwfAURyRbkQHzcd1ThD1XESRpc+v72J2d7jlXZRlZWhuoJAIi8EVQFTvA2poTr7IgICJ2mHpHr1mwIrYe0CylnEa4rFHyIrMW3VOGUBEIdK9AQF8bdb9PmY/xBhGL7J9gevhpTmLn868wAAAABJRU5ErkJggg==');
+      --password_focus: url('data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAZCAYAAAArK+5dAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAGmSURBVHgBzZVRTsJAEEBnWk0h4QNuUA9ArTcof1p+9ATgCfAI9QbeAG6gJAKfHsE1JYbPHqF8lQLtuIW2NLG2K1bjJE1ndmfm7exmZxFKxJvpqkzBgAANQmgigQtEDBDGimk/lcVj0eRqoj0A0qAg3CFf6tRvmPNtgDfVRgjUywy5AMR4QJNXo4tCpNzkE83KJHdkAKNm2q2aOe8o5vyCcHPGx+PtIRWVYAiiFdCj3vSV8DUKjJKTv+GrWzh5watp+4X/jF0iCa6VS3sMZRWslcCIk/PJ0Poq+W4xuLlN9RD6eT6ftwjpPIURvUGB1K8WDgKy2NTFAIBqojW67wxKhJDcWFUFAdXKrwNOsoY3a/eJDqVGdlkCJOT3glL/IJRZo8tYLoC3gWGRnSdJ8sT/VNpaXE0B/+4M3PirHoBE1r5d2K1IF40TA/AWrXTn94kZ60KVCFcQ9Sg4QsQA/KFZ17bpu7B61u74TwgoXgHtu+aOJx/6VWWAY+U4AIHweZyIOvK2qa+nWo/f3OX+yaSKAfygQ6BRTBMO+9tuqtBWhZ+K7y2z5gf8r6I4voJjrwAAAABJRU5ErkJggg==');
+      --password_error: url('data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAZCAYAAAArK+5dAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAGNSURBVHgBzVVRTsJAEJ1pwW+8Qf3zQxBPoJ5AEoH4Rz2B3EA8gdwA/EYSbuAVGjXRP3sD4ctE2h1nF2ghFjpgJbwEdhnmvbedne4ipIDKVw4o5fLsAgALPA6ByAekAT73H9L4uFK8VG+x2O0Ktg/W+By9gb88Zal4rQ0EN3MhvXLPPAVCWWqSSxQv1tw58SEE6hrf+oPo/0MuW17d86zCeVzC/BOHD0D6BFyaD16tY8TH4xN8T14dFetd/m5MlJSbtCfWL9JR9WwqrlndZeIG9nfTLMIQLTcpxUqInUazkFZ2Cdddi3vTn2WpQQwKPyEd/nQsrG+QAf7dYKFNTXsCci1pEsjbFY6NUjScBb4NHno9L9GA0YnEDQPasB46EFAL4o3fvT0YwqzvszegNr709vWHX8SWlCU3sIO72RRfH3mOvoS2+R6gLE1uEO5F9wKVqs34vMrKgFR81hAeS2m71KZYgA2QE2fyNUmlywa/3SNA1HeGiCY30CCrOxll4hrbPU0hCB34K77Uwun7A4F0kLhrcZNAAAAAAElFTkSuQmCC');
+    }
+
+    .img {
+      width: 100%;
+      height: 100%;
+      border-right: 1.5px solid #2A4464;
+      transition: border-color 0.5s ease;
+      box-sizing: border-box;
+    }
+
+    .img::before {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 100%;
+      background-repeat: no-repeat;
+      background-size: 100%;
+      background-position: center;
+      transition: background-image 0.5s ease;
+    }
+
+    .row:has(.row_input--error) .img {
+      border-color: #FF2D55;
+    }
+
+    /* IP */
+    .img.img_ip::before {
+      background-size: 32%;
+      background-image: var(--ip);
+    }
+
+    .row:has(input:focus) .img_ip::before {
+      background-image: var(--ip_focus);
+    }
+
+    /* Account */
+    .img.img_account::before {
+      background-size: 45%;
+      background-image: var(--account);
+    }
+
+    .row:has(input:focus) .img_account::before {
+      background-image: var(--account_focus);
+    }
+
+    .row:has(.row_input--error) .img_account::before {
+      background-image: var(--account_error);
+    }
+
+    /* Password */
+    .img.img_password::before {
+      background-size: 45%;
+      background-image: var(--password);
+    }
+
+    .row:has(input:focus) .img_password::before {
+      background-image: var(--password_focus);
+    }
+
+    .row:has(.row_input--error) .img_password::before {
+      background-image: var(--password_error);
+    }
+
+    /* img end  */
+
+    .btn {
+      width: 200px;
+      padding: 12px 15px;
+      background-color: #fff;
+      color: #2c3e50;
+      border: 1.5px solid #2c3e50;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-top: 80px;
+      outline: none;
+    }
+
+    .btn:active {
+      background-color: #2c3e50;
+      color: #fff;
+    }
+
+    /* 當按鈕有 disabled 屬性時的樣式 */
+    .btn.disabled {
+      background-color: #cccccc;
+      color: #666666;
+      cursor: not-allowed;
+      pointer-events: none;
+      /* 禁止所有事件 */
+      opacity: 0.6;
+      /* 視覺效果：透明度降低 */
+    }
+
+    .login_footer {
+      position: relative;
+      margin-bottom: 40px;
+      margin-top: 40px;
+      bottom: 0;
+      color: #9AA1AE;
+      font-size: 8px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-align: center;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+    }
+  </style>
 </head>
+
 <body>
-  <h1>標題0205</h1>
-  <label>傳遞過來的參數：</label></br>
-  <textarea  id="txt_id" value="沒訊息"></textarea></br>
-  <textarea  id="txt_id1" value="沒訊息"></textarea></br>
-  <textarea  id="txt_id2" value="沒訊息"></textarea></br>
-  <textarea  id="txt_id3" value="沒訊息"></textarea>
-  
+  </div>
+  <div class="login">
+    <div class="login_logo">
+      <img
+        src="data:image/jpeg;base64,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"
+        alt="IWA Logo" />
+    </div>
+    <div class="login_content">
+      <div class="login_content">
+        <span class="login_content_title">IWA 智慧建築整合管理平台</span>
+        <div class="login_content_group">
+          <div class="row">
+            <div class="row_img">
+              <div class="img img_ip"></div>
+            </div>
+            <div class="row_input">
+              <input id="ipId" class="input" type="text" placeholder="請輸入登入位置" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="row_img">
+              <div class="img img_account"></div>
+            </div>
+            <div class="row_input">
+              <input id="userId" class="input" type="text" placeholder="請輸入帳號" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="row_img">
+              <div class="img img_password"></div>
+            </div>
+            <div class="row_input">
+              <input id="password" class="input" type="password" placeholder="請輸入密碼" />
+            </div>
+          </div>
+        </div>
+        <div id="loginButton" onclick="sendMessage()" class="btn">登入</div>
+      </div>
+
+    </div>
+    <div class="login_footer">
+      &copy; Chicony Power Technology Co., Ltd. All Rights Reserved.
+    </div>
+  </div>
+
+  <!-- script -->
+  <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/versions/2.1.13/sdk.js"></script>
+  <script>
+    function sendMessage() {
+      const button = document.getElementById('loginButton');
+
+      // 檢查按鈕是否已被鎖住
+      if (button.classList.contains('disabled')) {
+        return; // 若已鎖定則不執行
+      }
+
+      // 鎖住按鈕
+      button.classList.add('disabled');
+
+      liff.init({ liffId: "2006266553-X1aYap8L", }) // 替換成你的 LIFF ID
+        .then(() => {
+          var Get_ipId = encodeURIComponent(document.getElementById("ipId").value)
+          var Get_userId = encodeURIComponent(document.getElementById("userId").value)
+          var Get_Password = encodeURIComponent(document.getElementById("password").value)
+
+          var LineUserId = ""
+          var LineGroupId = "ID?"
+          var LineRoomId = "ID?"
+
+          var apiUrl = "";//"http://" + in_ip + "/api/login";
+          liff.sendMessages([{
+            type: 'image',
+            originalContentUrl: 'https://iwapublic.s3.ap-northeast-1.amazonaws.com/Login_pic2_0.png?ip=' + Get_ipId + '&account=' + Get_userId + '&password=' + Get_Password,
+            previewImageUrl: 'https://iwapublic.s3.ap-northeast-1.amazonaws.com/Login_pic2_0.png?ip=' + Get_ipId + '&account=' + Get_userId + '&password=' + Get_Password
+          }])
+          liff.closeWindow();// 關閉liff頁面。
+        })
+        .catch((err) => {
+          console.error("LIFF 初始化失敗", err);
+          liff.closeWindow();// 關閉liff頁面。
+        });
+    }
+  </script>
 </body>
+
 </html>
