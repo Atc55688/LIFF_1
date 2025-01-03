@@ -437,6 +437,17 @@
       color: #fff;
     }
 
+    /* 當按鈕有 disabled 屬性時的樣式 */
+    .btn.disabled {
+      background-color: #cccccc;
+      color: #666666;
+      cursor: not-allowed;
+      pointer-events: none;
+      /* 禁止所有事件 */
+      opacity: 0.6;
+      /* 視覺效果：透明度降低 */
+    }
+
     .login_footer {
       position: relative;
       margin-bottom: 40px;
@@ -490,7 +501,7 @@
             </div>
           </div>
         </div>
-        <div  onclick="sendMessage()" class="btn">登入</div>
+        <div id="loginButton" onclick="sendMessage()" class="btn">登入</div>
       </div>
 
     </div>
@@ -503,6 +514,16 @@
   <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/versions/2.1.13/sdk.js"></script>
   <script>
     function sendMessage() {
+      const button = document.getElementById('loginButton');
+
+      // 檢查按鈕是否已被鎖住
+      if (button.classList.contains('disabled')) {
+        return; // 若已鎖定則不執行
+      }
+
+      // 鎖住按鈕
+      button.classList.add('disabled');
+
       liff.init({ liffId: "2006266553-X1aYap8L", }) // 替換成你的 LIFF ID
         .then(() => {
           var Get_ipId = encodeURIComponent(document.getElementById("ipId").value)
