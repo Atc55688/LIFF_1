@@ -474,7 +474,7 @@
     </div>
     <div class="login_content">
       <div class="login_content">
-        <span class="login_content_title">(4)IWA 智慧建築整合管理平台</span>
+        <span class="login_content_title">IWA 智慧建築整合管理平台</span>
         <div class="login_content_group">
           <div class="row">
             <div class="row_img">
@@ -522,10 +522,10 @@
           .then(() => {
               // 登出
               liff.logout();
-      
+              document.getElementById("messageBox").style.display = "登出";
               // 可選：重新載入頁面以更新狀態
-              window.location.reload();
-            document.getElementById("messageBox").style.display = "登出";
+              //window.location.reload();
+            
           })
           .catch((error) => {
               console.error('LIFF initialization failed', error);
