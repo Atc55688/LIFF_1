@@ -516,31 +516,48 @@
   <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/versions/2.1.13/sdk.js"></script>
   <script>
     function logout(){
-      liff.logout();  // 登出
-      //alert('登出')
-      document.getElementById("messageBox").style.display = "登出";
+
+      // 初始化 LIFF
+      liff.init({ liffId: "2006266553-5WQAQkXv" })
+          .then(() => {
+              // 登出
+              liff.logout();
+      
+              // 可選：重新載入頁面以更新狀態
+              window.location.reload();
+            document.getElementById("messageBox").style.display = "登出";
+          })
+          .catch((error) => {
+              console.error('LIFF initialization failed', error);
+          });
     }
     function sendMessage() {
 
-      if (liff.isLoggedIn()) {
-         // alert('登入可以發送')
-        document.getElementById("messageBox").style.display = "登入可以發送";
-          // 已經登入，可以發送訊息
-          liff.sendMessages([{
-              type: 'text',
-              text: 'Hello, world!'
-          }]).then(() => {
-              console.log('Message sent');
-          }).catch((error) => {
-              console.error('Error sending message', error);
+      // 初始化 LIFF
+      liff.init({ liffId: "2006266553-5WQAQkXv" })
+          .then(() => {
+              // 初始化成功後，檢查登入狀態
+              if (liff.isLoggedIn()) {
+                 document.getElementById("messageBox").style.display = "登入可以發送";
+                  // 已登入，執行需要登入的操作
+                  liff.sendMessages([{
+                      type: 'text',
+                      text: 'Hello, world!'
+                  }]).then(() => {
+                      console.log('Message sent');
+                  }).catch((error) => {
+                      console.error('Error sending message', error);
+                  });
+              } else {
+                 document.getElementById("messageBox").style.display = "尚未登入";
+                  // 未登入，引導使用者登入
+                  liff.login();
+              }
+          })
+          .catch((error) => {
+              console.error('LIFF initialization failed', error);
           });
-      } else {
-          //alert('尚未登入')
-        document.getElementById("messageBox").style.display = "尚未登入";
-          // 尚未登入，引導使用者登入並回到原本的頁面
-          const redirectUri = window.location.href;  // 取得當前頁面的 URL
-          liff.login({ redirectUri: redirectUri });
-      }
+      
       
             
       const button = document.getElementById('loginButton');
