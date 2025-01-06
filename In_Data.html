@@ -474,7 +474,7 @@
     </div>
     <div class="login_content">
       <div class="login_content">
-        <span class="login_content_title">(3)IWA 智慧建築整合管理平台</span>
+        <span class="login_content_title">(4)IWA 智慧建築整合管理平台</span>
         <div class="login_content_group">
           <div class="row">
             <div class="row_img">
@@ -503,6 +503,7 @@
         </div>
         <div id="loginButton" onclick="sendMessage()" class="btn">登入</div>
         <div id="loginButton2" onclick="logout()" class="btn">登出</div>
+        <div id="messageBox" class="btn"><p>這是你的訊息</p></div>
       </div>
 
     </div>
@@ -516,12 +517,14 @@
   <script>
     function logout(){
       liff.logout();  // 登出
-      alert('登出')
+      //alert('登出')
+      document.getElementById("messageBox").style.display = "登出";
     }
     function sendMessage() {
 
       if (liff.isLoggedIn()) {
-          alert('登入可以發送')
+         // alert('登入可以發送')
+        document.getElementById("messageBox").style.display = "登入可以發送";
           // 已經登入，可以發送訊息
           liff.sendMessages([{
               type: 'text',
@@ -532,7 +535,8 @@
               console.error('Error sending message', error);
           });
       } else {
-          alert('尚未登入')
+          //alert('尚未登入')
+        document.getElementById("messageBox").style.display = "尚未登入";
           // 尚未登入，引導使用者登入並回到原本的頁面
           const redirectUri = window.location.href;  // 取得當前頁面的 URL
           liff.login({ redirectUri: redirectUri });
