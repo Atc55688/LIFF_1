@@ -523,11 +523,9 @@
 
       // 鎖住按鈕
       button.classList.add('disabled');
-      liff.logout()
+      
 
-      if (liff.isLoggedIn()) {
-          // 已經登入，可以發送訊息
-          liff.init({ liffId: "2006266553-X1aYap8L", }) // 替換成你的 LIFF ID
+      liff.init({ liffId: "2006266553-X1aYap8L", }) // 替換成你的 LIFF ID
           .then(() => {
             var Get_ipId = encodeURIComponent(document.getElementById("ipId").value)
             var Get_userId = encodeURIComponent(document.getElementById("userId").value)
@@ -550,11 +548,6 @@
             //liff.closeWindow();// 關閉liff頁面。
             alert(err)
           });
-      } else {
-          // 尚未登入，引導使用者登入並回到原本的頁面
-          const redirectUri = window.location.href;  // 取得當前頁面的 URL
-          liff.login({ redirectUri: redirectUri });
-      }
 
       
     }
