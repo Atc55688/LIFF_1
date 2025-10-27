@@ -474,7 +474,7 @@
     </div>
     <div class="login_content">
       <div class="login_content">
-        <span class="login_content_title">1IWA 智慧建築整合管理平台</span>
+        <span class="login_content_title">11:07IWA 智慧建築整合管理平台</span>
         <div class="login_content_group">
           <div class="row">
             <div class="row_img">
@@ -536,60 +536,49 @@
       // 初始化 LIFF
       liff.init({ liffId: "2006266553-5WQAQkXv" })
           .then(() => {
+
+            // 建立要分享的訊息
+  const message = {
+    type: 'flex',
+    altText: '這是一個 Flex Message 範例',
+    contents: {
+      type: 'bubble',
+      body: {
+        type: 'box',
+        layout: 'vertical',
+        contents: [
+          {
+            type: 'text',
+            text: '你好，這是 Flex Message 範例',
+            weight: 'bold',
+            size: 'md'
+          }
+        ]
+      }
+    }
+  };
+
+             // 呼叫 shareTargetPicker 分享訊息
+              liff.shareTargetPicker([message])
+                .then(() => {
+                  console.log('訊息已分享');
+                })
+                .catch((err) => {
+                  console.error('分享失敗', err);
+                });
+            
+            }).catch((err) => {
+              console.error('LIFF 初始化失敗', err);
+            });
+                  
               // 初始化成功後，檢查登入狀態
               if (liff.isLoggedIn()) {
                  document.getElementById("messageBox").style.display = "登入可以發送";
                   // 已登入，執行需要登入的操作
-                  liff.shareTargetPicker([
-                    
-                    /*{
+                  liff.shareTargetPicker([{
                       type: 'text',
                       text: 'Hello, world!'
-                  }*/
-
-
-
-                    {
-  "type": "flex",
-  "altText": "文字按鈕範例",
-  "contents": {
-    "type": "bubble",
-    "body": {
-      "type": "box",
-      "layout": "vertical",
-      "contents": [
-        {
-          "type": "text",
-          "text": "這是一個文字按鈕範例",
-          "wrap": true,
-          "size": "md"
-        }
-      ]
-    },
-    "footer": {
-      "type": "box",
-      "layout": "vertical",
-      "contents": [
-        {
-          "type": "button",
-          "action": {
-            "type": "message",
-            "label": "點我發訊息",
-            "text": "你好，這是按鈕訊息"
-          },
-          "style": "primary"
-        }
-      ]
-    }
-  }
-}
-
-                    
-
-
-                    
-                  
-                  ]).then(() => {
+                  }]).then(() => {
                       console.log('Message sent');
                   }).catch((error) => {
                       console.error('Error sending message', error);
