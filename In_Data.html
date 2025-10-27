@@ -474,7 +474,7 @@
     </div>
     <div class="login_content">
       <div class="login_content">
-        <span class="login_content_title">56IWA 智慧建築整合管理平台</span>
+        <span class="login_content_title">1IWA 智慧建築整合管理平台</span>
         <div class="login_content_group">
           <div class="row">
             <div class="row_img">
@@ -540,7 +540,9 @@
               if (liff.isLoggedIn()) {
                  document.getElementById("messageBox").style.display = "登入可以發送";
                   // 已登入，執行需要登入的操作
-                  liff.sendMessages([/*{
+                  liff.shareTargetPicker([
+                    
+                    /*{
                       type: 'text',
                       text: 'Hello, world!'
                   }*/
