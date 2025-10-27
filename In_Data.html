@@ -539,50 +539,24 @@
 
             // 建立要分享的訊息
   const message_test =  {
-  'type': 'bubble',
-  'body': {
-    'type': 'box',
-    'layout': 'vertical',
-    'contents': [
-      {
-        'type': 'text',
-        'text': '薪資入賬',
-        'weight': 'bold',
-        'size': 'xl'
-      },
-      {
-        'type': 'box',
-        'layout': 'vertical',
-        'margin': 'lg',
-        'spacing': 'sm',
-        'contents': [
+    type: 'flex',
+    altText: '這是一個 Flex Message 範例',
+    contents: {
+      type: 'bubble',
+      body: {
+        type: 'box',
+        layout: 'vertical',
+        contents: [
           {
-            'type': 'box',
-            'layout': 'baseline',
-            'spacing': 'sm',
-            'contents': [
-              {
-                'type': 'text',
-                'text': '薪水',
-                'color': '#aaaaaa',
-                'size': 'sm',
-                'flex': 1
-              },
-              {
-                'type': 'text',
-                'text': '999,999,999',
-                'wrap': true,
-                'color': '#666666',
-                'size': 'sm',
-                'flex': 5
-              }
-            ]
+            type: 'text',
+            text: '你好，這是 Flex Message 範例',
+            weight: 'bold',
+            size: 'md'
           }
         ]
       }
-    ]
-  }
-};
+    }
+  };
 
                   
               // 初始化成功後，檢查登入狀態
