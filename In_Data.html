@@ -650,7 +650,66 @@
 
           var Get_id_flex = encodeURIComponent(document.getElementById("id_flex").value)
           var Get_id_altText = encodeURIComponent(document.getElementById("id_altText").value)
-          var Get_id_contents = document.getElementById("id_contents").value
+          //var Get_id_contents = document.getElementById("id_contents").value
+            var Get_id_contents = '{
+          "type": "bubble",
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": "薪資入帳",
+                "weight": "bold",
+                "size": "xl"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "margin": "lg",
+                "spacing": "sm",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "薪水",
+                        "color": "#aaaaaa",
+                        "size": "sm",
+                        "flex": 1
+                      },
+                      {
+                        "type": "text",
+                        "text": "999,999,999",
+                        "wrap": true,
+                        "color": "#666666",
+                        "size": "sm",
+                        "flex": 5
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "footer": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "button",
+                "action": {
+                  "type": "uri",
+                  "label": "OK",
+                  "uri": "http://linecorp.com/"
+                }
+              }
+            ]
+          }
+        }'
 
             const message_test =  {
                       type: 'flex',
