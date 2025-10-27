@@ -513,7 +513,7 @@
           </div>
           <div class="row">
              <div class="row_input">
-                <input id="id_altText" class="input" type="text" placeholder="02:36外側訊息" />
+                <input id="id_altText" class="input" type="text" placeholder="04:28外側訊息" />
              </div>
           </div>
           <div class="row">
@@ -650,8 +650,8 @@
 
           var Get_id_flex = encodeURIComponent(document.getElementById("id_flex").value)
           var Get_id_altText = encodeURIComponent(document.getElementById("id_altText").value)
-          //var Get_id_contents = document.getElementById("id_contents").value
-            var Get_id_contents = `{
+          var Get_id_contents = document.getElementById("id_contents").value
+          /*  var Get_id_contents = `{
           "type": "bubble",
           "body": {
             "type": "box",
@@ -709,7 +709,7 @@
               }
             ]
           }
-        }`
+        }`*/
 
             const message_test =  {
                       type: 'flex',
