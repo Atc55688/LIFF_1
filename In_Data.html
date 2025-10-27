@@ -504,6 +504,10 @@
         <div id="loginButton" onclick="sendMessage()" class="btn">登入</div>
         <div id="loginButton2" onclick="logout()" class="btn">登出</div>
         <div id="messageBox" class="btn"><p>這是你的訊息</p></div>
+
+        <input id="id_flex" class="input" type="text" placeholder="flex" />
+        <input id="id_altText" class="input" type="text" placeholder="外側訊息" />
+        <textarea id="id_contents" class="input" placeholder="json" rows="10" cols="50"></textarea>
       </div>
 
     </div>
@@ -558,69 +562,86 @@
     }
   };
             
-  const message_test =  {
+            
+  const message_test567 =  {
     type: 'flex',
-    altText: '薪資入賬消息',
+    altText: '薪資入帳消息',
     contents: {
-  "type": "bubble",
-  "body": {
-    "type": "box",
-    "layout": "vertical",
-    "contents": [
-      {
-        "type": "text",
-        "text": "薪資入賬",
-        "weight": "bold",
-        "size": "xl"
-      },
-      {
-        "type": "box",
-        "layout": "vertical",
-        "margin": "lg",
-        "spacing": "sm",
-        "contents": [
-          {
+          "type": "bubble",
+          "body": {
             "type": "box",
-            "layout": "baseline",
-            "spacing": "sm",
+            "layout": "vertical",
             "contents": [
               {
                 "type": "text",
-                "text": "薪水",
-                "color": "#aaaaaa",
-                "size": "sm",
-                "flex": 1
+                "text": "薪資入帳",
+                "weight": "bold",
+                "size": "xl"
               },
               {
-                "type": "text",
-                "text": "999,999,999",
-                "wrap": true,
-                "color": "#666666",
-                "size": "sm",
-                "flex": 5
+                "type": "box",
+                "layout": "vertical",
+                "margin": "lg",
+                "spacing": "sm",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "薪水",
+                        "color": "#aaaaaa",
+                        "size": "sm",
+                        "flex": 1
+                      },
+                      {
+                        "type": "text",
+                        "text": "999,999,999",
+                        "wrap": true,
+                        "color": "#666666",
+                        "size": "sm",
+                        "flex": 5
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "footer": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "button",
+                "action": {
+                  "type": "uri",
+                  "label": "OK",
+                  "uri": "http://linecorp.com/"
+                }
               }
             ]
           }
-        ]
-      }
-    ]
-  },
-  "footer": {
-    "type": "box",
-    "layout": "vertical",
-    "contents": [
-      {
-        "type": "button",
-        "action": {
-          "type": "uri",
-          "label": "OK",
-          "uri": "http://linecorp.com/"
         }
-      }
-    ]
-  }
-}
     };
+
+
+            var Get_id_flex = encodeURIComponent(document.getElementById("id_flex").value)
+          var Get_id_altText = encodeURIComponent(document.getElementById("id_altText").value)
+          var Get_id_contents = encodeURIComponent(document.getElementById("id_contents").value)
+
+            const message_test567 =  {
+                      type: 'flex',
+                      altText: Get_id_altText,
+                      contents: {
+                            Get_id_contents
+                                }
+                      };
+
+
+            
                   
               // 初始化成功後，檢查登入狀態
               if (liff.isLoggedIn()) {
