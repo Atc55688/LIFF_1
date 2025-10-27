@@ -559,7 +559,10 @@
   };
             
   const message_test =  {
-  type: 'bubble',
+    type: 'flex',
+    altText: '這是一個 Flex Message 範例',
+    contents: {
+      type: 'bubble',
   body: {
     type: 'box',
     layout: 'vertical',
@@ -602,7 +605,8 @@
       }
     ]
   }
-};
+}
+    };
                   
               // 初始化成功後，檢查登入狀態
               if (liff.isLoggedIn()) {
