@@ -538,7 +538,7 @@
           .then(() => {
 
             // 建立要分享的訊息
-  const message = {
+  const message_test = {
     type: 'flex',
     altText: '這是一個 Flex Message 範例',
     contents: {
@@ -558,27 +558,18 @@
     }
   };
 
-             // 呼叫 shareTargetPicker 分享訊息
-              liff.shareTargetPicker([message])
-                .then(() => {
-                  console.log('訊息已分享');
-                })
-                .catch((err) => {
-                  console.error('分享失敗', err);
-                });
-            
-            }).catch((err) => {
-              console.error('LIFF 初始化失敗', err);
-            });
                   
               // 初始化成功後，檢查登入狀態
               if (liff.isLoggedIn()) {
                  document.getElementById("messageBox").style.display = "登入可以發送";
                   // 已登入，執行需要登入的操作
-                  liff.shareTargetPicker([{
+                  liff.shareTargetPicker([
+                    message_test
+                    /*{
                       type: 'text',
                       text: 'Hello, world!'
-                  }]).then(() => {
+                  }*/
+                  ]).then(() => {
                       console.log('Message sent');
                   }).catch((error) => {
                       console.error('Error sending message', error);
