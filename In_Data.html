@@ -540,10 +540,54 @@
               if (liff.isLoggedIn()) {
                  document.getElementById("messageBox").style.display = "登入可以發送";
                   // 已登入，執行需要登入的操作
-                  liff.sendMessages([{
+                  liff.sendMessages([/*{
                       type: 'text',
                       text: 'Hello, world!'
-                  }]).then(() => {
+                  }*/
+
+
+
+                    {
+  "type": "flex",
+  "altText": "文字按鈕範例",
+  "contents": {
+    "type": "bubble",
+    "body": {
+      "type": "box",
+      "layout": "vertical",
+      "contents": [
+        {
+          "type": "text",
+          "text": "這是一個文字按鈕範例",
+          "wrap": true,
+          "size": "md"
+        }
+      ]
+    },
+    "footer": {
+      "type": "box",
+      "layout": "vertical",
+      "contents": [
+        {
+          "type": "button",
+          "action": {
+            "type": "message",
+            "label": "點我發訊息",
+            "text": "你好，這是按鈕訊息"
+          },
+          "style": "primary"
+        }
+      ]
+    }
+  }
+}
+
+                    
+
+
+                    
+                  
+                  ]).then(() => {
                       console.log('Message sent');
                   }).catch((error) => {
                       console.error('Error sending message', error);
