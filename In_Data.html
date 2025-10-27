@@ -474,7 +474,7 @@
     </div>
     <div class="login_content">
       <div class="login_content">
-        <span class="login_content_title">--IWA 智慧建築整合管理平台</span>
+        <span class="login_content_title">56IWA 智慧建築整合管理平台</span>
         <div class="login_content_group">
           <div class="row">
             <div class="row_img">
@@ -581,47 +581,11 @@
           var LineRoomId = "ID?"
 
           var apiUrl = "";//"http://" + in_ip + "/api/login";
-         /* liff.sendMessages([{
+          liff.sendMessages([{
             type: 'image',
             originalContentUrl: 'https://iwapublic.s3.ap-northeast-1.amazonaws.com/Login_pic2_0.png?ip=' + Get_ipId + '&account=' + Get_userId + '&password=' + Get_Password,
             previewImageUrl: 'https://iwapublic.s3.ap-northeast-1.amazonaws.com/Login_pic2_0.png?ip=' + Get_ipId + '&account=' + Get_userId + '&password=' + Get_Password
-          }])*/
-
-      liff.sendMessages([{
-  "type": "flex",
-  "altText": "文字按鈕範例",
-  "contents": {
-    "type": "bubble",
-    "body": {
-      "type": "box",
-      "layout": "vertical",
-      "contents": [
-        {
-          "type": "text",
-          "text": "這是一個文字按鈕範例",
-          "wrap": true,
-          "size": "md"
-        }
-      ]
-    },
-    "footer": {
-      "type": "box",
-      "layout": "vertical",
-      "contents": [
-        {
-          "type": "button",
-          "action": {
-            "type": "message",
-            "label": "點我發訊息",
-            "text": "你好，這是按鈕訊息"
-          },
-          "style": "primary"
-        }
-      ]
-    }
-  }
-}
-])
+          }])
 
       
           liff.closeWindow();// 關閉liff頁面。
