@@ -518,7 +518,7 @@
           </div>
           <div class="row">
              <div class="row_input">
-               <textarea id="id_contents" class="input" placeholder="json" rows="10" cols="50"></textarea>
+               <textarea id="id_contents" class="input"  rows="10" cols="50"></textarea>
              </div>
           </div>
         </div>
@@ -648,16 +648,14 @@
     };
 
 
-            var Get_id_flex = encodeURIComponent(document.getElementById("id_flex").value)
+          var Get_id_flex = encodeURIComponent(document.getElementById("id_flex").value)
           var Get_id_altText = encodeURIComponent(document.getElementById("id_altText").value)
           var Get_id_contents = encodeURIComponent(document.getElementById("id_contents").value)
 
             const message_test =  {
                       type: 'flex',
                       altText: Get_id_altText,
-                      contents: {
-                            Get_id_contents
-                                }
+                      contents: JSON.parse(Get_id_contents)
                       };
 
 
