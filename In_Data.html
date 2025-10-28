@@ -603,6 +603,8 @@
             try {
                 contentsObj = JSON.parse(Get_id_contents);
             } catch(e) {
+              // 取得 div 元素
+              var div = document.getElementById("myDiv");
               div.textContent = "錯誤  內容不是合法 JSON:";
                 return; // 停止
             }
