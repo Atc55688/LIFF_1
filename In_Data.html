@@ -598,6 +598,52 @@
             var Get_id_altText = document.getElementById("id_altText").value;
             var Get_id_contents = document.getElementById("id_contents").value
 
+           if (!Get_id_contents || Get_id_contents.trim() === "") {
+                Get_id_contents = {
+                    "type": "bubble",
+                    "body": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "你好，這是 Flex Message 範例",
+                                "weight": "bold",
+                                "size": "md"
+                            },
+                            {
+                                "type": "box",
+                                "layout": "vertical",
+                                "margin": "lg",
+                                "spacing": "sm",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "這裡可以放更多訊息",
+                                        "size": "sm",
+                                        "color": "#666666"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "footer": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "button",
+                                "action": {
+                                    "type": "uri",
+                                    "label": "查看更多",
+                                    "uri": "https://line.me"
+                                }
+                            }
+                        ]
+                    }
+                };
+            }
+
             // 先嘗試解析 JSON
             let contentsObj;
             try {
