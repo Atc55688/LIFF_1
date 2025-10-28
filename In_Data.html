@@ -572,10 +572,25 @@
                  // liff.shareTargetPicker([
                 //message_test123
                 liff.shareTargetPicker([
-                  {
-                      type: 'text',
-                      text: 'Hello, world!'
-                  }
+                 {
+    type: 'flex',
+    altText: '這是一個 Flex Message 範例',
+    contents: {
+      type: 'bubble',
+      body: {
+        type: 'box',
+        layout: 'vertical',
+        contents: [
+          {
+            type: 'text',
+            text: '你好，這是 Flex Message 範例',
+            weight: 'bold',
+            size: 'md'
+          }
+        ]
+      }
+    }
+  }
                   ]).then(() => {
                       console.log('Message sent');
                   }).catch((error) => {
