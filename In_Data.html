@@ -588,7 +588,12 @@
                  //document.getElementById("messageBox").style.display = "登入可以發送";
                   // 已登入，執行需要登入的操作
                  // liff.shareTargetPicker([
-                liff.shareTargetPicker([message]).then(() => {
+                liff.shareTargetPicker([
+                 {
+                   'type': 'text',
+                   'text': 'Hello, World!'
+                 }  
+                ]).then(() => {
                       // 取得 div 元素
                       var div = document.getElementById("myDiv");
                       // 改變文字
