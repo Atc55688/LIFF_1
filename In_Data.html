@@ -500,7 +500,7 @@
             </div>
           </div>
         </div>
-      
+         <div id="myDiv">原本的文字</div>
         <div id="loginButton" onclick="sendMessage()" class="btn">09:26登入</div>
         <div id="loginButton2" onclick="logout()" class="btn">登出</div>
         <div id="messageBox" class="btn"><p>這是你的訊息</p></div>
@@ -589,9 +589,18 @@
                   // 已登入，執行需要登入的操作
                  // liff.shareTargetPicker([
                 liff.shareTargetPicker([message]).then(() => {
+                      // 取得 div 元素
+                      var div = document.getElementById("myDiv");
+                      // 改變文字
+                      div.textContent = "成功";
                       console.log('Message sent');
                   }).catch((error) => {
+                      // 取得 div 元素
+                      var div = document.getElementById("myDiv");
+                      // 改變文字
+                      div.textContent = "錯誤";
                       console.error('Error sending message', error);
+                  
                   });
               } else {
                  //document.getElementById("messageBox").style.display = "尚未登入";
