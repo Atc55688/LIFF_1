@@ -499,9 +499,19 @@
               <input id="password" class="input" type="password" placeholder="請輸入密碼" />
             </div>
           </div>
+          <div class="row">
+             <div class="row_input">
+                <input id="id_altText" class="input" type="text" placeholder="外側訊息" />
+             </div>
+          </div>
+          <div class="row">
+             <div class="row_input">
+               <textarea id="id_contents" class="input"  rows="10" cols="50"></textarea>
+             </div>
+          </div>
         </div>
          <div id="myDiv">原本的文字</div>
-        <div id="loginButton" onclick="sendMessage()" class="btn">09:26登入</div>
+        <div id="loginButton" onclick="sendMessage()" class="btn">登入</div>
         <div id="loginButton2" onclick="logout()" class="btn">登出</div>
         <div id="messageBox" class="btn"><p>這是你的訊息</p></div>
       </div>
@@ -562,8 +572,10 @@
                 type: "text",
                 text: "Hello from LIFF!"
               };
+
+            
               
-                   const message = {
+   const message = {
     type: 'flex',
     altText: '這是一個 Flex Message 範例',
     contents: {
@@ -582,6 +594,16 @@
       }
     }
   };       
+
+            var Get_id_altText = encodeURIComponent(document.getElementById("id_altText").value)
+            var Get_id_contents = document.getElementById("id_contents").value
+
+            const message_share =  {
+                      type: 'flex',
+                      altText: Get_id_altText,
+                      contents: JSON.parse(Get_id_contents)
+                      //contents:Get_id_contents
+                      };
                   
               // 初始化成功後，檢查登入狀態
               if (liff.isLoggedIn()) {
@@ -589,10 +611,11 @@
                   // 已登入，執行需要登入的操作
                  // liff.shareTargetPicker([
                 liff.shareTargetPicker([
-                 {
+                 message_share
+                  /*{
                    'type': 'text',
                    'text': 'Hello, World!'
-                 }  
+                 }*/  
                 ]).then(() => {
                       // 取得 div 元素
                       var div = document.getElementById("myDiv");
