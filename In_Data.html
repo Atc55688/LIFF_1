@@ -598,7 +598,7 @@
                       // 取得 div 元素
                       var div = document.getElementById("myDiv");
                       // 改變文字
-                      div.textContent = "錯誤";
+                      div.textContent = "錯誤" + error.message;
                       console.error('Error sending message', error);
                   
                   });
